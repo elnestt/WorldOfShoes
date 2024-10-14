@@ -1,0 +1,15 @@
+.color{
+    display: flex;
+    background-color: burlywood;
+    margin: 0;
+    padding: 0;
+}
+
+.parent{
+    display: flex;
+}
+
+body{
+    flex-direction: row;
+    
+}
