@@ -14,5 +14,9 @@ def about():
 def home():
     return render_template('home.html')
 
+@app.route('/shop')
+def shop():
+    return render_template('shop.html')
+
 if __name__ == '__main__':
     app.run(debug=True)
