@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block title %}Блог{% endblock %}
+
+{% block content %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Контактна інформація</title>
+</head>
+<body>
+    <h1>Наш номер телефону</h1>
+    <p><a href="tel:+380986547856">+380986547856</a></p>
+
+    <h1>Наша Instagram сторінка</h1>
+    <p><a href="https://www.instagram.com/world_of_shoes" target="_blank">@World of Shoes</a></p>
+
+    <h1>Зворотній зв'язок</h1>
+    <img src="{{ url_for('static', filename='jopa.png') }}" />
+</body>
+</html>
+{% endblock %}
