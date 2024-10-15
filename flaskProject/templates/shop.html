@@ -1,15 +1,21 @@
-<!DOCTYPE html>
-<html lang="uk">
-<title>Магазини</title>
-<link rel="stylesheet" href="location.css">
-<body>
-    <h1 class="color">Магазини World of shoes</h1>
-    <div class="parent">
+{% extends "base.html" %}
 
-        <p1 class="Nike">МАГАЗИН NIKE</p1>
-        <p2>м. Київ, бул. Л. Українки, 24 Графік роботи: 10:00 - 21:00</p2>
-        <p3 class="Nike">МАГАЗИН NIKE</p3>
-        <p4>м. Київ, Кільцева дорога, 1 ТРЦ RESPUBLIKA PARK Графік роботы: 10:00 - 22:00</p4>
+{% block title %}Магазини{% endblock %}
+
+{% block content %}
+<title>Магазини</title>
+<link rel="" href="css_files/location.css">
+<body>
+    <p1 class=".header">Магазини World of Shoes</p1>
+    <div>
+        <p class="Nike">МАГАЗИН NIKE</p>
+        <p>м. Київ, бул. Л. Українки, 24</p>
+        <p>Графік роботи: 10:00 - 21:00</p>
+    </div> 
+    <div>    
+        <p class="Nike">МАГАЗИН NIKE</p>
+        <p>м. Київ, Кільцева дорога, 1</p>
+        <p> ТРЦ RESPUBLIKA PARK Графік роботы: 10:00 - 22:00</p>
     </div>
 </body>
-</html>
+{% endblock %}
