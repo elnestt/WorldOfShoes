@@ -7,7 +7,6 @@
     <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico') }}">
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        
         @keyframes slideDown {
             0% { max-height: 0; opacity: 0; }
             100% { max-height: 300px; opacity: 1; }
@@ -36,16 +35,29 @@
         }
     </style>
 </head>
-<body class="bg-blue-100">
-    <nav class="bg-green-500 p-4">
+<body class="div1" style="background-color:rgb(255, 255, 255);">
+    <nav class="div2" style="background-color:rgb(182, 192, 204); height:50px;">
         <div class="container mx-auto flex justify-between items-center">
-            <a href="/" class="text-white text-xl font-bold transition-transform duration-300 hover:scale-110">WorldOfShoes</a>
+            <div class="flex items-center space-x-2">
+                <a href="">
+                    <img src="{{ url_for('static', filename='favicon.ico') }}" width="40" height="40" style="margin-top: 10%; margin-right: 0%;" >
+                </a>
+                <a href="/" class="text-white text-xl font-bold transition-transform duration-300 hover:scale-110">WorldOfShoes</a>
+            </div>
             <div class="hidden md:flex space-x-4">
-                <a href="/" class="text-white hover:text-blue-200 transition-colors duration-300 hover:underline">Головна</a>
-                <a href="/about" class="text-white hover:text-blue-200 transition-colors duration-300 hover:underline">Про нас</a>
-                <a href="/shop" class="text-white hover:text-blue-200 transition-colors duration-300 hover:underline">Магазини</a>
-                <a href="/home" class="text-white hover:text-blue-200 transition-colors duration-300 hover:underline">Блог</a>
-                <a href="/contacts" class="text-white hover:text-blue-200 transition-colors duration-300 hover:underline">Зворотній зв'язок</a>
+                <a href="/contacts">
+                    <img src="{{ url_for('static', filename='phone_dark_1.png') }}" width="40" height="40" style="margin-top: 10%;">
+                </a>
+                <div class="hidden md:flex space-x-4" style="margin-top: 3px;">
+                <a href="/about">
+                     <img src="{{ url_for('static', filename='phone_dark_1.png') }}" width="40" height="40">
+                </a>
+                <a href="/shop">
+                    <img src="{{ url_for('static', filename='phone_dark_1.png') }}" width="40" height="40">
+                <a href="/home">
+                   <img src="{{ url_for('static', filename='phone_dark_1.png') }}" width="40" height="40">
+                </a>
+                </div>
             </div>
             <button id="mobile-menu-button" class="md:hidden text-white w-6 h-6 relative focus:outline-none">
                 <span class="burger-line block absolute h-0.5 w-6 bg-current transform transition duration-500 ease-in-out line1"></span>
@@ -53,6 +65,7 @@
                 <span class="burger-line block absolute h-0.5 w-6 bg-current transform transition duration-500 ease-in-out line3"></span>
             </button>
         </div>
+    </nav>
         <div id="mobile-menu" class="hidden md:hidden overflow-hidden">
             <a href="/" class="text-white hover:text-blue-200 transition-colors duration-300 hover:underline">Головна</a>
             <a href="/about" class="text-white hover:text-blue-200 transition-colors duration-300 hover:underline">Про нас</a>
@@ -67,6 +80,9 @@
         <h1>Ласкаво просимо на головну сторінку</h1>
         {% endblock %}
     </div>
+
+    <div class="container mx-auto flex justify-between items-center">
+        
 
     <script>
         const mobileMenuButton = document.getElementById('mobile-menu-button');
