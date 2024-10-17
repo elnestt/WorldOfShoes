@@ -4,35 +4,86 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}WorldOfShoes{% endblock %}</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css_files/base.css') }}">
     <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico') }}">
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        @keyframes slideDown {
-            0% { max-height: 0; opacity: 0; }
-            100% { max-height: 300px; opacity: 1; }
-        }
-        @keyframes slideUp {
-            0% { max-height: 300px; opacity: 1; }
-            100% { max-height: 0; opacity: 0; }
-        }
-        .animate-slide-down {
-            animation: slideDown 0.3s ease-out forwards;
-        }
-        .animate-slide-up {
-            animation: slideUp 0.3s ease-in forwards;
-        }
-        .burger-line {
-            transition: all 0.3s ease-in-out;
-        }
-        .open .line1 {
-            transform: rotate(-45deg) translate(-5px, 6px);
-        }
-        .open .line2 {
-            opacity: 0;
-        }
-        .open .line3 {
-            transform: rotate(45deg) translate(-5px, -6px);
-        }
+     @keyframes slideDown {
+    0% { max-height: 0; opacity: 0; }
+    100% { max-height: 300px; opacity: 1; }
+}
+@keyframes slideUp {
+    0% { max-height: 300px; opacity: 1; }
+    100% { max-height: 0; opacity: 0; }
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+.animate-slide-down {
+    animation: slideDown 0.3s ease-out forwards;
+}
+.animate-slide-up {
+    animation: slideUp 0.3s ease-in forwards;
+}
+.burger-line {
+    transition: all 0.3s ease-in-out;
+}
+.open .line1 {
+    transform: rotate(-45deg) translate(-5px, 6px);
+}
+.open .line2 {
+    opacity: 0;
+}
+.open .line3 {
+    transform: rotate(45deg) translate(-5px, -6px);
+}
+.image-container img {
+     transition: 0.3s;
+}
+
+.image-container img:hover {
+    content: url('static/icons/phone_dark_1.png');
+}
+
+.image-container1 img {
+     transition: 0.3s;
+}
+
+.image-container1 img:hover {
+    content: url('static/icons/blog_icon_dark.png');
+}
+
+.image-container2 img {
+     transition: 0.3s;
+}
+
+.image-container2 img:hover {
+    content: url('static/icons/more_about_us_dark.png');
+}
+
+.image-container3 img {
+     transition: 0.3s;
+}
+
+.image-container3 img:hover {
+    content: url('static/icons/pin_location_dark.png');
+}
+
+.headel{
+    font-family: 'Montserrat', sans-serif;
+    font-size: 100px;
+}
+
+.image-container4 img {
+     transition: 0.3s;
+}
+
+.image-container4 img:hover {
+    content: url('static/icons/buy_dark.png');
+}
+
+
     </style>
 </head>
 <body class="div1" style="background-color:rgb(255, 255, 255);">
@@ -40,22 +91,22 @@
         <div class="container mx-auto flex justify-between items-center">
             <div class="flex items-center space-x-2">
                 <a href="">
-                    <img src="{{ url_for('static', filename='favicon.ico') }}" width="40" height="40" style="margin-top: 10%; margin-right: 0%;" >
+                    <img src="{{ url_for('static', filename='icons/favicon.ico') }}" width="40" height="40" style="margin-top: -15%; margin-right: 0%;" >
                 </a>
-                <a href="/" class="text-white text-xl font-bold transition-transform duration-300 hover:scale-110">WorldOfShoes</a>
+                <a href="/" class="text-white text-xl font-bold transition-transform duration-300 hover:scale-110" style="margin-bottom: 7%;">WorldOfShoes</a>
             </div>
-            <div class="hidden md:flex space-x-4">
-                <a href="/contacts">
-                    <img src="{{ url_for('static', filename='phone_dark_1.png') }}" width="40" height="40" style="margin-top: 10%;">
+            <div class="hidden md:flex space-x-4" >
+                <a href="/contacts" class="image-container">
+                    <img src="{{ url_for('static', filename='icons/phone_light_1.png') }}" width="40" height="40" style="margin-top: 10%;">
                 </a>
                 <div class="hidden md:flex space-x-4" style="margin-top: 3px;">
-                <a href="/about">
-                     <img src="{{ url_for('static', filename='phone_dark_1.png') }}" width="40" height="40">
+                <a href="/about" class="image-container2">
+                     <img src="{{ url_for('static', filename='icons/more_about_us_light.png') }}" width="70" height="70" style="margin-top: -20%;">
                 </a>
-                <a href="/shop">
-                    <img src="{{ url_for('static', filename='phone_dark_1.png') }}" width="40" height="40">
-                <a href="/home">
-                   <img src="{{ url_for('static', filename='phone_dark_1.png') }}" width="40" height="40">
+                <a href="/shop" class="image-container3">
+                    <img src="{{ url_for('static', filename='icons/pin_location_light.png') }}" width="57" height="57" style="margin-top: -13%;">
+                <a href="/home"class="image-container1">
+                   <img src="{{ url_for('static', filename='icons/blog_icon_light.png') }}" width="70" height="70" style="margin-top: -20%;">
                 </a>
                 </div>
             </div>
@@ -77,7 +128,12 @@
 
     <div class="container mx-auto mt-8 p-4">
         {% block content %}
-        <h1>Ласкаво просимо на головну сторінку</h1>
+        <h1 class="headel" style="margin-left: 20%; color:rgb(104, 136, 143);">Nike</h1>
+        <h2 class="headel" style="margin-left: 21%; color:rgb(104, 136, 143);">Pro</h2>
+        <img src="{{ url_for('static', filename='icons/IMG_5080.gif') }}" width="900" height="900" style="margin-left: 50%; margin-top: -20%;">
+        <a href="/shop" class="image-container4"></a>
+        <img src="{{ url_for('static', filename='icons/buy_light.png') }}" style="margin-left: 15%; margin-top: -20%;">
+        </a>
         {% endblock %}
     </div>
 
