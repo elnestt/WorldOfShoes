@@ -1,0 +1,102 @@
+header{
+    text-align: center;
+    background: url(img/black.png);
+    background-size: cover;
+    color: aliceblue;
+    font-family: 'Montserrat', sans-serif;
+}
+
+img {
+    width: 200px;
+    margin: 40px 0px 0px 0px;
+    
+}
+ul {
+    padding: 20px;
+    background: rgba(0,0,0,0.3);
+}
+
+li{
+  display: inline;
+  padding: 0px 10px 0px 10px;
+  font-family: 'Montserrat', sans-serif;
+
+}
+
+a{
+    color: #f0eeeb;
+    text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
+}
+h1 {
+    font-size: 50px;
+    font-family: 'Montserrat', sans-serif;
+    text-align: center;
+}
+
+
+
+
+article{
+    max-width: 800px;
+    padding: 20px;
+    margin: 0 auto;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.eko-sneakers {
+  display: block;
+  margin: 0 auto;
+  max-width: 100%; 
+  width: 600px;
+  height: auto;
+}
+
+.smart-sneakers{
+  display: block;
+  margin: 0 auto;
+  max-width: 100%; 
+  width: 445px;
+  height: auto;
+}
+
+.kolab {
+  display: block;
+  margin: 0 auto;
+  max-width: 100%; 
+  width: 455px;
+  height: auto;
+  margin-top: 150px;
+}
+
+
+
+p {
+  width: 100%; 
+  max-width: 800px; 
+  margin: 0 auto; 
+  text-align: justify; 
+  font-family: 'Montserrat', sans-serif;
+  font-size: 28px; 
+  line-height: 1.6; 
+  margin-bottom: 20px; 
+  font-weight: 500;
+  }
+
+
+
+@media (max-width: 500px){
+  h1{
+    font-size: 36px;
+    padding: 5px;
+  }
+  li{
+    display: block;
+    padding: 5px;
+  }
+  img{
+    margin: 10px;
+  }
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
