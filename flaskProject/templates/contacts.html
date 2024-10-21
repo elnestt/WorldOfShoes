@@ -3,20 +3,22 @@
 {% block title %}Блог{% endblock %}
 
 {% block content %}
-<link rel="stylesheet" href="{{ url_for('static', filename='css_files/contacts.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/contacts.css') }}">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Контактна інформація</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="n1">
+        <strong style="font-size: 40px;">Контактна інформація</strong>
+<div style="margin-top: 30px;"></div>
         <h1>Наш номер телефону</h1>
     <p><a href="tel:+380986547856" style="color: blue;">+380986547856</a></p>
 
     <h1>Наша Instagram сторінка</h1>
     <p><a href="https://www.instagram.com/world_of_shoes" target="_blank" style="color: blue;">@World of Shoes</a></p>
-
     <h1>Зворотній зв'язок</h1>
     <img src="{{ url_for('static', filename='contacts.png') }}" />
 </body>
