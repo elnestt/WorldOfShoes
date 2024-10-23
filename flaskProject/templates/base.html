@@ -94,8 +94,8 @@
             font-size: 95px; 
             font-weight: bold;
             color: rgb(79, 118, 111); /* Цвет текста */
-            margin-top: -5%;
-            margin-left: 3%;
+            margin-top: 0%;
+            margin-left: 0 %;
             font-family: 'Montserrat', sans-serif;
         }
 
@@ -141,17 +141,19 @@
         </div>
     </nav>
 
-    <div class="container mx-auto mt-8 p-4">
+    <div class="container mt-8 p-4">
         {% block content %}
-        <h1 class="headel" style=" color:rgb(79, 118, 111); font-size: 140px; font-family: 'Montserrat', sans-serif;"><b>Nike</b></h1>
-        <h2 class="headel" style=" color:rgb(79, 118, 111); font-size: 140px;    font-family: 'Montserrat', sans-serif;"><b>Pro</b</h2>
-        <img src="{{ url_for('static', filename='icons/Kostik.gif') }}" width="600" height="600" style="margin-left: 50%; margin-top: -15%;">
-        <a href="/home" class="square">BUY</a>
-        <img src="{{ url_for('static', filename='icons/Jordan1.png') }}" width="900" height="900" style="margin-top: 5%; margin-left: 52%;">
-        <img src="{{ url_for('static', filename='icons/jordan11_red.png') }}" width="900" height="900" style="margin-top: 5%; margin-right: auto;">
-        <img src="{{ url_for('static', filename='icons/Jordan4_grey.png') }}" width="900" height="900" style="margin-top: 5%; margin-left: 52%;">
+        <h1 class="headel" style=" color:rgb(79, 118, 111); font-size: 140px; font-family: 'Montserrat', sans-serif; margin-left: 7%;"><b>Nike</b></h1>
+        <h2 class="headel" style=" color:rgb(79, 118, 111); font-size: 140px; font-family: 'Montserrat', sans-serif; margin-left: 7%"><b>Pro</b</h2>
+        <img src="{{ url_for('static', filename='icons/Kostik.gif') }}" width="1000" height="1000" style="margin-right: auto; margin-top: -5%; float: right;">
+        <a href="/home" class="square" style="margin-left: 0%;">BUY</a>
         {% endblock %}
     </div> 
+    <div>
+        <img src="{{ url_for('static', filename='icons/Jordan1.png') }}" width="900" height="900" style="margin-top: 5%; margin-left: auto;">
+        <img src="{{ url_for('static', filename='icons/jordan11_red.png') }}" width="900" height="900" style="margin-top: 5%; margin-right: 48%;">
+        <img src="{{ url_for('static', filename='icons/Jordan4_grey.png') }}" width="900" height="900" style="margin-top: 5%; margin-left: auto;">
+    </div>
 
         
 
