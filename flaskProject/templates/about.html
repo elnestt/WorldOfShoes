@@ -1,119 +1,25 @@
 {% extends "base.html" %}
 
-{% block title %}Про нас{% endblock %}
-
-<style>
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-    padding: 20px;
-}
-
-.container {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-}
-
-.block {
-    display: flex;
-    background-color: white;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    align-items: center;
-    max-width: 800px;
-    margin: 0 auto;
-}
-
-.block-img {
-    width: 150px;
-    height: 150px;
-    object-fit: cover;
-    margin-right: 20px;
-    border-radius: 8px;
-}
-
-.block-text h3 {
-    color: #007BFF;
-    margin-bottom: 10px;
-}
-
-.block-text p {
-    font-size: 1em;
-    line-height: 1.5;
-}
-
-</style> 
-
-
-
+{% block title %}Про Нас{% endblock %}
 
 {% block content %}
-<
+<link rel="stylesheet" href="{{ url_for('static', filename='css/about.css') }}">
+    <h2 class="n2">WorldOfShoes</h2>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Блоки з зображенням і текстом</title>
-    
+    <title>Історія нашого магазину:</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 </head>
 <body>
-
-    <div class="container">
-        <!-- Перший блок -->
-        <div class="block">
-            <img src="image1.jpg" alt="Опис зображення 1" class="block-img">
-            <div class="block-text">
-                <h3>Заголовок 1</h3>
-                <p>Це текст для першого блоку. Ви можете вставити будь-який опис або інформацію, пов'язану з зображенням.</p>
-            </div>
-        </div>
-
-        <!-- Другий блок -->
-        <div class="block">
-            <img src="image2.jpg" alt="Опис зображення 2" class="block-img">
-            <div class="block-text">
-                <h3>Заголовок 2</h3>
-                <p>Це текст для другого блоку. Опис продукту, послуги або інформації.</p>
-            </div>
-        </div>
-
-        <!-- Третій блок -->
-        <div class="block">
-            <img src="image3.jpg" alt="Опис зображення 3" class="block-img">
-            <div class="block-text">
-                <h3>Заголовок 3</h3>
-                <p>Третій блок з текстом і зображенням. Можна додати деталі про продукт чи проєкт.</p>
-            </div>
-        </div>
-
-        <!-- Четвертий блок -->
-        <div class="block">
-            <img src="image4.jpg" alt="Опис зображення 4" class="block-img">
-            <div class="block-text">
-                <h3>Заголовок 4</h3>
-                <p>Це текст для четвертого блоку. Можна додати опис чи інформацію.</p>
-            </div>
-        </div>
-
-        <!-- П'ятий блок -->
-        <div class="block">
-            <img src="image5.jpg" alt="Опис зображення 5" class="block-img">
-            <div class="block-text">
-                <h3>Заголовок 5</h3>
-                <p>П'ятий блок із зображенням та описом, який можна редагувати на ваш розсуд.</p>
-            </div>
-        </div>
-    </div>
-
+    <div class="n1" style="float: none;">
+        <strong style="font-size: 40px;">Про Нас</strong>
+<div style="margin-top: 30px;"></div>
+        <h1><b>У 2015 році група друзів із захопленням у світі спорту і моди вирішила створити свій бізнес, що поєднував би їхню пристрасть до кросівок із мрією відкрити власну справу. З дитинства вони з цікавістю спостерігали за розвитком спортивного взуття та помічали, як кросівки стали більше, ніж просто елементом спортивного одягу — вони перетворилися на символ культури та стилю життя.
+            Спочатку друзі почали шукати взуття з колекцій популярних брендів, яких не було у звичайних магазинах. Через знайомих у США, Європі та Японії вони замовляли рідкісні моделі, які інші магазини не могли запропонувати. За рік невеликий магазин, який вони відкрили в центрі міста, став місцем зустрічі колекціонерів та фанатів.
+            У міру того, як ринок кросівок почав рости, магазин розширив свій асортимент і почав співпрацю з ексклюзивними брендами, організовувати власні покази, розіграші, заходи, що залучали ще більше людей. Кросівки стали способом самовираження, а їхній магазин — місцем, де кожен міг знайти щось унікальне та оригінальне.</b>
+            </h1>
+    <img src="{{ url_for('static', filename='icons/team.jpg') }}" />
 </body>
 </html>
-
 {% endblock %}
-
