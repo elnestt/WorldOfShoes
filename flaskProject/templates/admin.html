@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block title %}Магазини{% endblock %}
+{% block content %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/admin.css') }}">
+
+<div class="adminbg">
+    <h1 style="text-align: center; font-size: 50px; margin-bottom: 20px;">Адмін-панель</h1>
+    <div>
+        <h1 style="text-align: center; font-size: 30px;">Замовелння</h1>
+        <div>
+            <table style="width: 90%; margin: 20px auto;" class="bg">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Email</th>
+                        <th>Сума</th>
+                        <th>Дата</th>
+                        <th>Статус</th>
+                        <th>Дії</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div>
+        <h1 style="text-align: center; font-size: 30px; margin-top: 60px;">Відгуки</h1>
+        <div>
+            <table style="width: 90%; margin: 20px auto;" class="bg">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Ім'я</th>
+                        <th>Email</th>
+                        <th>Повідомлення</th>
+                        <th>Дії</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

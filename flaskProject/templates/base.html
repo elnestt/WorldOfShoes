@@ -132,12 +132,15 @@
             </button>
         </div>
     </nav>
-        <div id="mobile-menu" class="hidden md:hidden overflow-hidden">
-            <a href="/" class="text-white hover:text-blue-200 transition-colors duration-300 hover:underline">Головна</a>
-            <a href="/about" class="text-white hover:text-blue-200 transition-colors duration-300 hover:underline">Про нас</a>
-            <a href="/shop" class="text-white hover:text-blue-200 transition-colors duration-300 hover:underline">Магазини</a>
-            <a href="/home" class="text-white hover:text-blue-200 transition-colors duration-300 hover:underline">Блог</a>
-            <a href="/contacts" class="text-white hover:text-blue-200 transition-colors duration-300 hover:underline">Зворотній зв'язок</a>
+        <div id="mobile-menu" class="hidden md:hidden overflow-hidden" style="display: inline-block; float: right;">
+            <div>
+                <a href="/contacts" class="text-white hover:text-blue-200 transition-colors duration-300 hover:underline"><img src="{{ url_for('static', filename='icons/phone_light_1.png') }}" style="width: 40px; height: 40px; margin-top: 10px;" ></a>
+            </div>
+            
+            <a href="/about" class="text-white hover:text-blue-200 transition-colors duration-300 hover:underline"><img src="{{ url_for('static', filename='icons/more_about_us_light.png') }}" style="width: 70px; height: 70px; margin-top: -5px;"></a>
+            <a href="/shop" class="text-white hover:text-blue-200 transition-colors duration-300 hover:underline"><img src="{{ url_for('static', filename='icons/pin_location_light.png') }}" style="width: 57px; height: 57px; margin-top: 1px;"></a>
+            <a href="/home" class="text-white hover:text-blue-200 transition-colors duration-300 hover:underline"><img src="{{ url_for('static', filename='icons/blog_icon_light.png') }}" style="width: 70px; height: 70px; margin-top: -5px;"></a>
+            
         </div>
     </nav>
 
