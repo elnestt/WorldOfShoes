@@ -94,8 +94,8 @@
             font-size: 95px; 
             font-weight: bold;
             color: rgb(79, 118, 111); /* Цвет текста */
-            margin-top: 0%;
-            margin-left: 0 %;
+            margin-top: 5%;
+            margin-left: 0%;
             font-family: 'Montserrat', sans-serif;
         }
 
@@ -132,30 +132,27 @@
             </button>
         </div>
     </nav>
-        <div id="mobile-menu" class="hidden md:hidden overflow-hidden" style="display: inline-block; float: right;">
-            <div>
-                <a href="/contacts" class="text-white hover:text-blue-200 transition-colors duration-300 hover:underline"><img src="{{ url_for('static', filename='icons/phone_light_1.png') }}" style="width: 40px; height: 40px; margin-top: 10px;" ></a>
-            </div>
-            
-            <a href="/about" class="text-white hover:text-blue-200 transition-colors duration-300 hover:underline"><img src="{{ url_for('static', filename='icons/more_about_us_light.png') }}" style="width: 70px; height: 70px; margin-top: -5px;"></a>
-            <a href="/shop" class="text-white hover:text-blue-200 transition-colors duration-300 hover:underline"><img src="{{ url_for('static', filename='icons/pin_location_light.png') }}" style="width: 57px; height: 57px; margin-top: 1px;"></a>
-            <a href="/home" class="text-white hover:text-blue-200 transition-colors duration-300 hover:underline"><img src="{{ url_for('static', filename='icons/blog_icon_light.png') }}" style="width: 70px; height: 70px; margin-top: -5px;"></a>
-            
+        <div id="mobile-menu" class="hidden md:hidden overflow-hidden">
+            <a href="/" class="text-white hover:text-blue-200 transition-colors duration-300 hover:underline">Головна</a>
+            <a href="/about" class="text-white hover:text-blue-200 transition-colors duration-300 hover:underline">Про нас</a>
+            <a href="/shop" class="text-white hover:text-blue-200 transition-colors duration-300 hover:underline">Магазини</a>
+            <a href="/home" class="text-white hover:text-blue-200 transition-colors duration-300 hover:underline">Блог</a>
+            <a href="/contacts" class="text-white hover:text-blue-200 transition-colors duration-300 hover:underline">Зворотній зв'язок</a>
         </div>
     </nav>
 
     <div class="container mt-8 p-4" style="max-width: none;">
         {% block content %}
-        <h1 class="headel" style=" color:rgb(79, 118, 111); font-size: 140px; font-family: 'Montserrat', sans-serif; margin-left: 7%;"><b>Nike</b></h1>
-        <h2 class="headel" style=" color:rgb(79, 118, 111); font-size: 140px; font-family: 'Montserrat', sans-serif; margin-left: 7%"><b>Pro</b</h2>
-        <img src="{{ url_for('static', filename='icons/Kostik.gif') }}" width="1000" height="1000" style="margin-right: auto; margin-top: -5%; float: right;">
+        <h1 class="headel" style=" color:rgb(79, 118, 111); font-size: 190px; font-family: 'Montserrat', sans-serif; margin-left: 7%; "><b>Nike</b></h1>
+        <h2 class="headel" style=" color:rgb(79, 118, 111); font-size: 190px; font-family: 'Montserrat', sans-serif; margin-left: 7%;  "><b>Pro</b</h2>
+        <img src="{{ url_for('static', filename='icons/Kostik.gif') }}" width="1400" height="1400" style="margin-right: auto; float: right; ">
         <a href="/home" class="square" style="margin-left: 0%;">BUY</a>
         
     </div> 
     <div>
-        <img src="{{ url_for('static', filename='icons/Jordan1.png') }}" width="900" height="900" style="margin-top: 5%; margin-left: auto;">
-        <img src="{{ url_for('static', filename='icons/jordan11_red.png') }}" width="900" height="900" style="margin-top: 5%; margin-right: 48%;">
-        <img src="{{ url_for('static', filename='icons/Jordan4_grey.png') }}" width="900" height="900" style="margin-top: 5%; margin-left: auto;">
+        <img src="{{ url_for('static', filename='icons/Jordan1.png') }}" width="1300" height="1300" style="margin-top: 10%; margin-left: auto;">
+        <img src="{{ url_for('static', filename='icons/jordan11_red.png') }}" width="1300" height="1300" style="margin-top: 5%; margin-right: 48%;">
+        <img src="{{ url_for('static', filename='icons/Jordan4_grey.png') }}" width="1300" height="1300" style="margin-top: 5%; margin-left: auto;">
         {% endblock %}
     </div>
 
