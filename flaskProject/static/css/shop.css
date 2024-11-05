@@ -1,16 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 .header{
-    justify-content: center;/*Текст по центру*/
+    text-align: center;/*Текст по центру*/
     font-weight: bold;
     font-family: 'Montserrat', sans-serif;
-    display: flex;
     background-color:rgb(73, 95, 100);
     width: 300px;/*Довжина*/
     height: 40px;/*Ширина*/
-    margin: 0;
-    margin-top: -10px;
-    margin-left: 50vh;/*Відступ зліва*/
-    padding: 0;
+    margin: 0 auto;
     font-size: 30px;/*Розмір шрифту*/
     border-radius: 10px;/*Заокруглення*/
     color: white;
@@ -38,8 +34,8 @@ body{
 #map {
     display: flex;
     position: absolute;
-    top: 30vh; /* Відступ зверху */
-    left: 80vh; /* Відступ зліва */
-    width: 50%; /* Ширина карти */
+    top: 160px; /* Відступ зверху */
+    margin-left: 600px; /* Відступ зліва */
+    width: 750px; /* Ширина карти */
     height: 500px; /* Висота карти */
 }
