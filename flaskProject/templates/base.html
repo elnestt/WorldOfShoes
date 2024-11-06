@@ -84,6 +84,14 @@
     content: url('static/icons/buy_dark.png');
 }
 
+.image-container6 img {
+     transition: 0.3s;
+}
+
+.image-container5 img:hover {
+    content: url('static/icons/shoe_dark.png');
+}
+
 .square {
             width: 300px; /* Размер квадрата */
             height: 200px;
@@ -107,25 +115,30 @@
         <div class="container mx-auto flex justify-between items-center">
             <div class="flex items-center space-x-2">
                 <a href="">
-                    <img src="{{ url_for('static', filename='icons/favicon.ico') }}" width="40" height="40" style="margin-top: -15%; margin-right: 0%;" >
+                    <img src="{{ url_for('static', filename='icons/favicon.ico') }}" width="40" height="40" style="margin-top: -25%; margin-right: 0%;" >
                 </a>
                 <a href="/" class="text-white text-xl font-bold transition-transform duration-300 hover:scale-110" style="margin-bottom: 7%;">WorldOfShoes</a>
             </div>
             <div class="hidden md:flex space-x-4" >
-                <a href="/home"class="image-container1">
-                    <img src="{{ url_for('static', filename='icons/blog_icon_light.png') }}" width="70" height="70" style="margin-top: -20%;">
-                </a>
-                <a href="/catalog" class="image-container">
-                    <img src="{{ url_for('static', filename='icons/phone_light_1.png') }}" width="40" height="40" style="margin-top: 10%;">
-                </a>
+
+
                 <div class="hidden md:flex space-x-4" style="margin-top: 3px;">
-                <a href="/about" class="image-container2">
-                     <img src="{{ url_for('static', filename='icons/more_about_us_light.png') }}" width="70" height="70" style="margin-top: -20%;">
+
+
+                <a href="/contacts" class="image-container5">
+                    <img src="{{ url_for('static', filename='icons/shoe_light.png') }}" width="70" height="70" style="margin-top: -20%;">
                 </a>
                 <a href="/shop" class="image-container3">
                     <img src="{{ url_for('static', filename='icons/pin_location_light.png') }}" width="57" height="57" style="margin-top: -13%;">
-                <a href="/contacts" class="image-container">
-                    <img src="{{ url_for('static', filename='icons/phone_light_1.png') }}" width="40" height="40" style="margin-top: 10%;">
+                </a>
+                <a href="/about" class="image-container2">
+                    <img src="{{ url_for('static', filename='icons/more_about_us_light.png') }}" width="70" height="70" style="margin-top: -20%;">
+               </a>
+                <a href="/catalog" class="image-container">
+                    <img src="{{ url_for('static', filename='icons/phone_light_1.png') }}" width="40" height="40" style="margin-top: 5%;">
+                </a>
+                <a href="/home"class="image-container1">
+                    <img src="{{ url_for('static', filename='icons/blog_icon_light.png') }}" width="70" height="70" style="margin-top: -18%;">
                 </a>
                 </div>
             </div>
