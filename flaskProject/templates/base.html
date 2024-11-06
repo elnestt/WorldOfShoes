@@ -112,7 +112,10 @@
                 <a href="/" class="text-white text-xl font-bold transition-transform duration-300 hover:scale-110" style="margin-bottom: 7%;">WorldOfShoes</a>
             </div>
             <div class="hidden md:flex space-x-4" >
-                <a href="/contacts" class="image-container">
+                <a href="/home"class="image-container1">
+                    <img src="{{ url_for('static', filename='icons/blog_icon_light.png') }}" width="70" height="70" style="margin-top: -20%;">
+                </a>
+                <a href="/catalog" class="image-container">
                     <img src="{{ url_for('static', filename='icons/phone_light_1.png') }}" width="40" height="40" style="margin-top: 10%;">
                 </a>
                 <div class="hidden md:flex space-x-4" style="margin-top: 3px;">
@@ -121,8 +124,8 @@
                 </a>
                 <a href="/shop" class="image-container3">
                     <img src="{{ url_for('static', filename='icons/pin_location_light.png') }}" width="57" height="57" style="margin-top: -13%;">
-                <a href="/home"class="image-container1">
-                   <img src="{{ url_for('static', filename='icons/blog_icon_light.png') }}" width="70" height="70" style="margin-top: -20%;">
+                <a href="/contacts" class="image-container">
+                    <img src="{{ url_for('static', filename='icons/phone_light_1.png') }}" width="40" height="40" style="margin-top: 10%;">
                 </a>
                 </div>
             </div>
@@ -136,6 +139,7 @@
         <div id="mobile-menu" class="hidden md:hidden overflow-hidden" style="float: right;">
             <a href="/contacts" class="text-white hover:text-blue-200 transition-colors duration-300 hover:underline"><img src="{{ url_for('static', filename='icons/phone_light_1.png') }}" width="40" height="40" style="margin-right: 0px;"></a>
             <a href="/about" class="text-white hover:text-blue-200 transition-colors duration-300 hover:underline"><img src="{{ url_for('static', filename='icons/more_about_us_light.png') }}" width="70" height="70" style="margin-right: 0px;"></a>
+            <a href="/catalog" class="text-white hover:text-blue-200 transition-colors duration-300 hover:underline"><img src="{{ url_for('static', filename='icons/pin_location_light.png') }}" width="57" height="57" style="margin-right: 0px;"></a>
             <a href="/shop" class="text-white hover:text-blue-200 transition-colors duration-300 hover:underline"><img src="{{ url_for('static', filename='icons/pin_location_light.png') }}" width="57" height="57" style="margin-right: 0px;"></a>
             <a href="/home" class="text-white hover:text-blue-200 transition-colors duration-300 hover:underline" style="margin-right: 0px;"><img src="{{ url_for('static', filename='icons/blog_icon_light.png') }}" width="70" height="70"></a>   
         </div>

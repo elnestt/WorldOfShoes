@@ -14,6 +14,10 @@ def about():
 def home():
     return render_template('home.html')
 
+@app.route('/catalog')
+def catalog():
+    return render_template('catalog.html')
+
 @app.route('/shop')
 def shop():
     return render_template('shop.html')
