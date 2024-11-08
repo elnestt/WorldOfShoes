@@ -8,3 +8,26 @@
     background-color: aliceblue;
     margin: 0 40px;
 }
+
+.detailsinfo{
+    display: flex;
+    justify-content: space-evenly;
+}
+.buttons{
+    background-color: #75959c;
+    width: 140px;
+    height: 40px;
+    border-radius: 20px;
+}
+.buttons:hover{
+    background-color: #627c82;
+}
+.buttonsdelete{
+    background-color: #75959c;
+    width: 140px;
+    height: 40px;
+    border-radius: 20px;
+}
+.buttonsdelete:hover{
+    background-color: #c54b4b;
+}
