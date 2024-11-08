@@ -1,12 +1,15 @@
-from flask import Flask, render_template, Blueprint
+
+from flask import Flask, render_template, Blueprint, session
 from routes.admin import admin_bp
 from models import init_db
+from routes.catalog import catalog_bp
 
 app = Flask(__name__)
+app.secret_key = 'your_secret_key_here'  # Додаємо секретний ключ
 
-init_db()
+init_db() 
 
-
+app.register_blueprint(catalog_bp)
 app.register_blueprint(admin_bp)
 
 
