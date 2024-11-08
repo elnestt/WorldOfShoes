@@ -5,7 +5,7 @@ def seed_products():
     conn = get_db_connection()
     products = [
         ('Nike Air Force 1',	3475,	'/static/Sneackers/Force.jpg'),
-        ('Nike Air Max 1',	3558,	'/static/Sneackers/Air.jpg'),
+        ('Nike Air Max 1',	3558,	'/static/Sneackers/Airmax.jpg'),
         ('Nike Air Jordan 1',	3959,	'/static/Sneackers/Jordan1.jpg'),
         ('Nike ACG Lowcate',	3009,	'/static/Sneackers/Pink.jpg'),
         ('Nike INITIATOR',	3459,	'/static/Sneackers/Browm.jpg'),
