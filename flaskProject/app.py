@@ -1,6 +1,14 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, Blueprint
+from routes.admin import admin_bp
+from models import init_db
 
 app = Flask(__name__)
+
+init_db()
+
+
+app.register_blueprint(admin_bp)
+
 
 @app.route('/')
 def base():
@@ -26,9 +34,7 @@ def shop():
 def contacts():
     return render_template('contacts.html')
 
-@app.route('/admin')
-def admin():
-    return render_template('admin.html')
+
 
 if __name__ == '__main__':
     app.run(debug=True)
