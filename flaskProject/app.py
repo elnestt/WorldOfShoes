@@ -1,6 +1,13 @@
-from flask import Flask, render_template
+from flask import Flask, render_template,session
+from models import init_db
+from routes.catalog import catalog_bp
 
 app = Flask(__name__)
+app.secret_key = 'your_secret_key_here'  # Додаємо секретний ключ
+
+init_db() 
+
+app.register_blueprint(catalog_bp)
 
 @app.route('/')
 def base():
