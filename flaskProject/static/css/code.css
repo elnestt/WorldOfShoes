@@ -6,11 +6,11 @@ header{
     font-family: 'Montserrat', sans-serif;
 }
 
-img {
-    width: 200px;
+img1 {
     margin: 40px 0px 0px 0px;
     
 }
+
 ul {
     padding: 20px;
     background: rgba(0,0,0,0.3);
@@ -29,9 +29,10 @@ a{
     font-family: 'Montserrat', sans-serif;
 }
 h1 {
-    font-size: 50px;
+    font-size: 75px;
     font-family: 'Montserrat', sans-serif;
     text-align: center;
+    margin-bottom: 7%;
 }
 
 
@@ -87,11 +88,11 @@ p {
 
 @media (max-width: 500px){
   h1{
-    font-size: 36px;
+    font-size: 30px;
     padding: 5px;
   }
   li{
-    display: block;
+    display: contents;
     padding: 5px;
   }
   img{

@@ -83,11 +83,26 @@
     content: url('static/icons/buy_dark.png');
 }
 
+.square {
+            width: 300px; /* Размер квадрата */
+            height: 200px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 12px solid rgb(104, 136, 143); /* Толстая рамка */
+            border-radius: 25px; /* Скругленные углы */
+            font-size: 95px; 
+            font-weight: bold;
+            color: rgb(79, 118, 111); /* Цвет текста */
+            margin-top: 0%;
+            margin-left: 0 %;
+            font-family: 'Montserrat', sans-serif;
+        }
 
     </style>
 </head>
 <body class="div1" style="background-color:rgb(255, 255, 255);">
-    <nav class="div2" style="background-color:rgb(182, 192, 204); height:50px;">
+    <nav class="div2" style="background-color:rgb(73, 95, 100); height:50px;">
         <div class="container mx-auto flex justify-between items-center">
             <div class="flex items-center space-x-2">
                 <a href="">
@@ -126,18 +141,21 @@
         </div>
     </nav>
 
-    <div class="container mx-auto mt-8 p-4">
+    <div class="container mt-8 p-4" style="max-width: none;">
         {% block content %}
-        <h1 class="headel" style="margin-left: 20%; color:rgb(104, 136, 143);">Nike</h1>
-        <h2 class="headel" style="margin-left: 21%; color:rgb(104, 136, 143);">Pro</h2>
-        <img src="{{ url_for('static', filename='icons/IMG_5080.gif') }}" width="900" height="900" style="margin-left: 50%; margin-top: -20%;">
-        <a href="/shop" class="image-container4"></a>
-        <img src="{{ url_for('static', filename='icons/buy_light.png') }}" style="margin-left: 15%; margin-top: -20%;">
-        </a>
+        <h1 class="headel" style=" color:rgb(79, 118, 111); font-size: 140px; font-family: 'Montserrat', sans-serif; margin-left: 7%;"><b>Nike</b></h1>
+        <h2 class="headel" style=" color:rgb(79, 118, 111); font-size: 140px; font-family: 'Montserrat', sans-serif; margin-left: 7%"><b>Pro</b</h2>
+        <img src="{{ url_for('static', filename='icons/Kostik.gif') }}" width="1000" height="1000" style="margin-right: auto; margin-top: -5%; float: right;">
+        <a href="/home" class="square" style="margin-left: 0%;">BUY</a>
+        
+    </div> 
+    <div>
+        <img src="{{ url_for('static', filename='icons/Jordan1.png') }}" width="900" height="900" style="margin-top: 5%; margin-left: auto;">
+        <img src="{{ url_for('static', filename='icons/jordan11_red.png') }}" width="900" height="900" style="margin-top: 5%; margin-right: 48%;">
+        <img src="{{ url_for('static', filename='icons/Jordan4_grey.png') }}" width="900" height="900" style="margin-top: 5%; margin-left: auto;">
         {% endblock %}
     </div>
 
-    <div class="container mx-auto flex justify-between items-center">
         
 
     <script>

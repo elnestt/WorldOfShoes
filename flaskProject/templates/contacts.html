@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block title %}Блог{% endblock %}
+{% block title %}Звязок з нами{% endblock %}
 
 {% block content %}
 <link rel="stylesheet" href="{{ url_for('static', filename='css/contacts.css') }}">
@@ -11,7 +11,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="n1">
+    <div class="n1" style="float: none;">
         <strong style="font-size: 40px;">Контактна інформація</strong>
 <div style="margin-top: 30px;"></div>
         <h1>Наш номер телефону</h1>
@@ -20,7 +20,7 @@
     <h1>Наша Instagram сторінка</h1>
     <p><a href="https://www.instagram.com/world_of_shoes" target="_blank" style="color: blue;">@World of Shoes</a></p>
     <h1>Зворотній зв'язок</h1>
-    <img src="{{ url_for('static', filename='contacts.png') }}" />
+    <img src="{{ url_for('static', filename='icons/contacts.png') }}" />
 </body>
 </html>
 {% endblock %}
