@@ -1,10 +1,121 @@
-.adminbg{
-    background-color: rgb(73, 95, 100);
-    max-width: 1200px;
-    margin: 0 auto;
-    padding-bottom: 20px;
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
 }
-.bg{
-    background-color: aliceblue;
-    margin: 0 40px;
+
+.adminbg {
+    padding: 40px;
+    background-color: #f1f1f1;
+    max-width: 1400px;
+    margin: 0 auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.order-header h1 {
+    text-align: center;
+    font-size: 32px;
+    color: #000000;
+    margin-bottom: 20px;
+    
+}
+
+.order-details, .order-items, .order-actions {
+    background-color: rgb(182, 192, 204);
+    padding: 20px;
+    margin-bottom: 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+ h1 {
+    background-color: rgb(104, 136, 143);
+    padding: 10px;
+    margin-bottom: 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.detailsinfo h2 {
+    font-size: 18px;
+    color: #000000;
+}
+
+.detailsinfo p {
+    font-size: 16px;
+    color: #000000;
+}
+
+.order-items h1 {
+    text-align: center;
+    font-size: 28px;
+    margin-bottom: 20px;
+    color: #000000;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0 auto;
+}
+
+table th, table td {
+    padding: 12px;
+    text-align: center;
+    font-size: 16px;
+    border-bottom: 1px solid #ddd;
+    color: #000000;
+}
+
+table th {
+    background-color: rgb(104, 136, 143);
+    font-weight: bold;
+    border-radius: 5px;
+}
+
+.order-actions h1 {
+    text-align: center;
+    font-size: 28px;
+    color: #000000;
+    margin-bottom: 20px;
+}
+
+.order-status, .order-delete {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.status-select {
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+}
+
+.button-update, .button-delete {
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.button-update {
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+}
+
+.button-update:hover {
+    background-color: #45a049;
+}
+
+.button-delete {
+    background-color: #e74c3c;
+    color: #fff;
+    border: none;
+}
+
+.button-delete:hover {
+    background-color: #c0392b;
 }

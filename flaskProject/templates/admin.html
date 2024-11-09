@@ -3,10 +3,100 @@
 {% block content %}
 <link rel="stylesheet" href="{{ url_for('static', filename='css/admin.css') }}">
 
+<style>
+    .adminbg {
+    background-color: #4E6D73; /* Світліший відтінок */
+    padding: 20px;
+    border-radius: 8px;
+}
+
+h1 {
+    font-size: 40px;
+    color: #fefefe;
+    font-weight: bold;
+    text-align: center;
+}
+
+table.bg {
+    width: 90%;
+    margin: 20px auto;
+    border-collapse: collapse;
+    background-color: #FFFFFF;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+table.bg th, table.bg td {
+    padding: 15px;
+    text-align: center;
+    border-bottom: 1px solid #ccc;
+}
+
+table.bg tr:hover {
+    background-color: #f1f1f1;
+}
+
+table.bg th {
+    background-color: #4E6D73;
+    color: #FFFFFF;
+    font-weight: bold;
+}
+
+.status-processing {
+    background-color: #FFD700; /* Жовтий для обробки */
+    color: #000;
+}
+
+.status-shipped {
+    background-color: #87CEFA; /* Блакитний для доставки */
+    color: #000;
+}
+
+.status-delivered {
+    background-color: #90EE90; /* Зелений для доставленого */
+    color: #000;
+}
+
+.status-cancelled {
+    background-color: #FFB6C1; /* Рожевий для скасованого */
+    color: #800000;
+}
+
+a.button-action {
+    padding: 8px 12px;
+    color: #FFFFFF;
+    background-color: #4E6D73;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+a.button-action:hover {
+    background-color: #3B5560;
+}
+
+h1 {
+    font-size: 36px;
+    color: #fefefe;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 20px;
+}
+h2 {
+    font-size: 28px;
+    color: #fefefe;
+    text-align: center;
+    margin-top: 40px;
+}
+
+
+</style>
+
 <div class="adminbg">
     <h1 style="text-align: center; font-size: 50px; margin-bottom: 20px;">Адмін-панель</h1>
     <div>
-        <h1 style="text-align: center; font-size: 30px;">Замовелння</h1>
+        <h1 style="text-align: center; font-size: 30px;">Замовлення</h1>
         <div>
             <table style="width: 90%; margin: 20px auto;" class="bg">
                 <thead>
@@ -20,7 +110,24 @@
                     </tr>
                 </thead>
                 <tbody>
-                    
+                    {% for order in orders %}
+                        <tr style="text-align: center;">
+                            <td >{{ order['id'] }}</td>
+                            <td >{{ order['email'] }}</td>
+                            <td>{{ order['total_price'] }}</td>
+                            <td >{{ order['date'] }}</td>
+                            <td>
+                                <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full 
+                                    {% if order['status'] == 'Обробляємо замовлення' %}status-processing
+                                    {% elif order['status'] == 'Замовлення уже в дорозі' %}status-shipped
+                                    {% elif order['status'] == 'Замовлення було доставлено успішно' %}status-delivered
+                                    {% else %}status-cancelled{% endif %}">
+                                    {{ order['status'] }}
+                                </span>
+                            </td>                            
+                            <td><a href="{{url_for('admin.details', order_id=order['id'])}}" class="button-action">Змінити</a></td>
+                        </tr>
+                    {% endfor %}
                 </tbody>
             </table>
         </div>

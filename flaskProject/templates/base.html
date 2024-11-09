@@ -100,6 +100,13 @@
     content: url('static/icons/trolley_dark.png');
 }
 
+.image-container8 img {
+     transition: 0.3s;
+}
+
+.image-container8 img:hover {
+    content: url('static/icons/icons8-instagram.png');
+}
 .square {
             width: 300px; /* Размер квадрата */
             height: 200px;
@@ -118,8 +125,8 @@
 
     </style>
 </head>
-<body class="div1" style="background-color:rgb(255, 255, 255);" >
-    <nav class="div2" style="background-color:rgb(73, 95, 100); height:50px;">
+<body class="div1" style="background-color:rgb(255, 255, 255);">
+   <nav class="div2" style="background-color:rgb(73, 95, 100); height:50px;">
         <div class="container mx-auto flex justify-between items-center">
             <div class="flex items-center space-x-2">
                 <a href="">
@@ -168,7 +175,10 @@
             <a href="/home" class="text-white hover:text-blue-200 transition-colors duration-300 hover:underline" style="margin-right: 0px;"><img src="{{ url_for('static', filename='icons/blog_icon_light.png') }}" width="70" height="70"></a>   
         </div>
     </nav>
+
+    
     {% block content %}
+    
     <div style="max-width: 3000px; margin: -80px auto;">
         <div class="container mt-8 p-4" >
             
@@ -182,11 +192,17 @@
             <img src="{{ url_for('static', filename='icons/Jordan1.png') }}" width="1300" height="1300" style="margin-top: 10%; margin-left: auto;">
             <img src="{{ url_for('static', filename='icons/jordan11_red.png') }}" width="1300" height="1300" style="margin-top: 5%; margin-right: 48%;">
 
+
 <img src="{{ url_for('static', filename='icons/Jordan4_grey.png') }}" width="1300" height="1300" style="margin-top: 5%; margin-left: auto;">
+
+
             
         </div>
     </div>
+    
     {% endblock %}
+
+
     </div>
 
         
