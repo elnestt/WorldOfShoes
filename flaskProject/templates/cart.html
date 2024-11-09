@@ -1,7 +1,44 @@
 {% extends "base.html" %}
 {% block title %}Кошик{% endblock %}
 {% block content %}
-<h1 class="text-3xl font-bold mb-4" style="margin-left: 5%;">Кошик</h1>
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+.n2{
+
+    text-align: center;
+    font-size: 60px; 
+    font-family: 'Montserrat', sans-serif;
+}
+
+.n1{
+    text-align: center;
+    font-size: 80px; 
+    font-family: 'Montserrat', sans-serif;
+}
+
+.n1 {
+    background-color: rgb(104, 136, 146);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 1200px;
+    height: 550px;
+    margin: 0 auto;
+    margin-top: 10%;
+}
+
+img {
+   border-radius: 10%;
+   justify-content: center;
+   align-items: center;
+    
+}
+
+
+</style>
+
 {% if cart %}
     <table class="w-full mb-4" style="margin-left: 5%;">
         <thead>
@@ -36,6 +73,6 @@
         <button type="submit" class=" text-white px-4 py-2 rounded " style="background-color: rgb(73, 95, 100); margin-left: 5%; width: 200px; height: 80px;">Оплатити замовлення</button>
     </form>
 {% else %}
-    <p>Ваш кошик порожній.</p>
+    <p class="n1">ВАШ КОШИК ПОРОЖНІЙ. </n> Ви можете придбати кросівки настиснувши на значок кросівка</p>
 {% endif %}
 {% endblock %}

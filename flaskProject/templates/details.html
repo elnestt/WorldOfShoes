@@ -5,29 +5,28 @@
 <link rel="stylesheet" href="{{ url_for('static', filename='css/admin.css') }}">
 
 <div class="adminbg">
-    <div style="margin: 0 0 30px;">
-        <h1 style="text-align: center; font-size: 50px; ">Деталі замовлення №{{order['id']}}</h1>
-        <div style="max-width: 600px; margin: 0 auto;" class="bg">
-            <div class="detailsinfo">
-                <h1>Емеіл: </h1>
-                <p>{{order['email']}}</p>
-            </div>
-            <div class="detailsinfo">
-                <h1>Адреса для відправлення: </h1>
-                <p >{{order['address']}}</p>
-            </div>
-            <div class="detailsinfo">
-                <h1>Дата оформлення замовлення: </h1>
-                <p>{{order['date']}}</p>
-            </div>
+    <div class="order-header">
+        <h1><b>Деталі замовлення №{{ order['id'] }}</b></h1>
+    </div>
+
+    <div class="order-details">
+        <div class="detailsinfo">
+            <h2><b>Е.Пошта:</b></h2>
+            <p>{{ order['email'] }}</p>
+        </div>
+        <div class="detailsinfo">
+            <h2><b>Адреса для відправлення:</b></h2>
+            <p>{{ order['address'] }}</p>
+        </div>
+        <div class="detailsinfo">
+            <h2><b>Дата оформлення замовлення:</b></h2>
+            <p>{{ order['date'] }}</p>
         </div>
     </div>
 
-
-
-    <div>
-        <h1 style="text-align: center; font-size: 50px;">Товари в замовленні</h1>
-        <table style="width: 90%; margin: 20px auto;" class="bg">
+    <div class="order-items">
+        <h1><b>Товари в замовленні</b></h1>
+        <table>
             <thead>
                 <tr>
                     <th>Назва товарів</th>
@@ -38,32 +37,38 @@
             </thead>
             <tbody>
                 {% for item in items %}
-                <tr style="text-align: center;">
+                <tr>
                     <td>{{ item['name'] }}</td>
                     <td>{{ item['quantity'] }}</td>
-                    <td>{{ item['price'] }} золотих</td>
+                    <td>{{ item['price'] }} V-bucks</td>
                     <td>{{ item['price'] * item['quantity'] }} грн</td>
                 </tr>
                 {% endfor %}
             </tbody>
         </table>
-        <h1 style="text-align: center; font-size: 50px; margin: 50px 0 30px;">Дії із замоленнями</h1>
-        <h1 style="text-align: center; font-size: 40px; margin: 0 0 10px;">Стан замовлення</h1>
-        <div style="max-width: 482px; margin: 0 auto 30px;">
-            <form action="{{ url_for('admin.update_order', order_id=order['id']) }}" method="post" class="mb-4">
-                <select name="status" class="p-2 border rounded mr-2">
+    </div>
+
+    <div class="order-actions">
+        <h1><b>Дії із замовленнями</b></h1>
+        <div class="order-status">
+            <h2><b>Стан замовлення</b></h2>
+            <form action="{{ url_for('admin.update_order', order_id=order['id']) }}" method="post">
+                <select name="status" class="status-select">
                     <option value="Обробляємо замовлення" {% if order['status'] == 'Обробляємо замовлення' %}selected{% endif %}>Обробляємо замовлення</option>
                     <option value="Замовлення уже в дорозі" {% if order['status'] == 'Замовлення уже в дорозі' %}selected{% endif %}>Замовлення уже в дорозі</option>
                     <option value="Замовлення було доставлено успішно" {% if order['status'] == 'Замовлення було доставлено успішно' %}selected{% endif %}>Замовлення було доставлено успішно</option>
                     <option value="Замовлення скасоване відправником" {% if order['status'] == 'Замовлення скасоване відправником' %}selected{% endif %}>Замовлення скасоване відправником</option>
                 </select>
-                <button type="submit" class="buttons">Оновити статус</button>
+                <button type="submit" class="button-update">Оновити статус</button>
             </form>
         </div>
-        <h1 style="text-align: center; font-size: 40px; margin: 0 0 10px;">Видалити замовлення</h1>
-        <form action="{{ url_for('admin.delete_order_route', order_id=order['id']) }}" method="post" style="display: flex; justify-content: center;">
-            <button type="submit" class="buttonsdelete">Видалити</button>
-        </form>
+
+        <div class="order-delete">
+            <h2><b>Видалити замовлення</b></h2>
+            <form action="{{ url_for('admin.delete_order_route', order_id=order['id']) }}" method="post">
+                <button type="submit" class="button-delete">Видалити</button>
+            </form>
+        </div>
     </div>
 </div>
 
