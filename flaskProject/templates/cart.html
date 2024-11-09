@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+{% block title %}Кошик{% endblock %}
+{% block content %}
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+.n2{
+
+    text-align: center;
+    font-size: 60px; 
+    font-family: 'Montserrat', sans-serif;
+}
+
+.n1{
+    text-align: center;
+    font-size: 80px; 
+    font-family: 'Montserrat', sans-serif;
+}
+
+.n1 {
+    background-color: rgb(104, 136, 146);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 1200px;
+    height: 550px;
+    margin: 0 auto;
+    margin-top: 10%;
+}
+
+img {
+   border-radius: 10%;
+   justify-content: center;
+   align-items: center;
+    
+}
+
+
+</style>
+
+{% if cart %}
+    <table class="w-full mb-4" style="margin-left: 5%;">
+        <thead>
+            <tr>
+                <th class="text-left">Товар</th>
+                <th class="text-left">Ціна</th>
+                <th class="text-left">Кількість</th>
+                <th class="text-left">Всього</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in cart.values() %}
+            <tr>
+                <td>{{ item.name }}</td>
+                <td>{{ item.price }} грн</td>
+                <td>{{ item.quantity }}</td>
+                <td>{{ item.price * item.quantity }} грн</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <p class="text-xl font-bold mb-4" style="margin-left: 5%;">Загальна вартість: {{ total }} грн</p>
+    <form action="{{ url_for('catalog.checkout') }}" method="post">
+        <div class="mb-4" style="margin-left: 5%;">
+            <label for="email" class="block mb-2">Email:</label>
+            <input type="email" id="email" name="email" required class="w-full p-2 border rounded">
+        </div>
+        <div class="mb-4" style="margin-left: 5%;">
+            <label for="address" class="block mb-2">Адреса доставки:</label>
+            <textarea id="address" name="address" required class="w-full p-2 border rounded"></textarea>
+        </div>
+        <button type="submit" class=" text-white px-4 py-2 rounded " style="background-color: rgb(73, 95, 100); margin-left: 5%; width: 200px; height: 80px;">Оплатити замовлення</button>
+    </form>
+{% else %}
+    <p class="n1">ВАШ КОШИК ПОРОЖНІЙ. </n> Ви можете придбати кросівки настиснувши на значок кросівка</p>
+{% endif %}
+{% endblock %}

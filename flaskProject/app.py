@@ -1,6 +1,17 @@
-from flask import Flask, render_template
+
+from flask import Flask, render_template, Blueprint, session
+from routes.admin import admin_bp
+from models import init_db
+from routes.catalog import catalog_bp
 
 app = Flask(__name__)
+app.secret_key = 'your_secret_key_here'  # Додаємо секретний ключ
+
+init_db() 
+
+app.register_blueprint(catalog_bp)
+app.register_blueprint(admin_bp)
+
 
 @app.route('/')
 def base():
@@ -14,6 +25,10 @@ def about():
 def home():
     return render_template('home.html')
 
+@app.route('/catalog')
+def catalog():
+    return render_template('catalog.html')
+
 @app.route('/shop')
 def shop():
     return render_template('shop.html')
@@ -21,6 +36,8 @@ def shop():
 @app.route('/contacts')
 def contacts():
     return render_template('contacts.html')
+
+
 
 if __name__ == '__main__':
     app.run(debug=True)

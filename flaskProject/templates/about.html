@@ -1,10 +1,11 @@
+<!--Написано Харчуком Олексієм-->
 {% extends "base.html" %}
 
 {% block title %}Про Нас{% endblock %}
 
 {% block content %}
 <link rel="stylesheet" href="{{ url_for('static', filename='css/about.css') }}">
-    <h2 class="n2">WorldOfShoes</h2>
+    
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,14 +13,16 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="n1" style="float: none;">
-        <strong style="font-size: 40px;">Про Нас</strong>
-<div style="margin-top: 30px;"></div>
+<div style="max-width: 1400px; margin: 0 auto;">
+    <div class="n1" style="float: none; max-width: 1600px; margin: 0 auto;">
+        <strong style="font-size: 70px;">Про Нас</strong>
+    <div style="margin-top: 30px;"></div>
         <h1><b>У 2015 році група друзів із захопленням у світі спорту і моди вирішила створити свій бізнес, що поєднував би їхню пристрасть до кросівок із мрією відкрити власну справу. З дитинства вони з цікавістю спостерігали за розвитком спортивного взуття та помічали, як кросівки стали більше, ніж просто елементом спортивного одягу — вони перетворилися на символ культури та стилю життя.
             Спочатку друзі почали шукати взуття з колекцій популярних брендів, яких не було у звичайних магазинах. Через знайомих у США, Європі та Японії вони замовляли рідкісні моделі, які інші магазини не могли запропонувати. За рік невеликий магазин, який вони відкрили в центрі міста, став місцем зустрічі колекціонерів та фанатів.
             У міру того, як ринок кросівок почав рости, магазин розширив свій асортимент і почав співпрацю з ексклюзивними брендами, організовувати власні покази, розіграші, заходи, що залучали ще більше людей. Кросівки стали способом самовираження, а їхній магазин — місцем, де кожен міг знайти щось унікальне та оригінальне.</b>
             </h1>
-    <img src="{{ url_for('static', filename='icons/team.jpg') }}" />
+    <img src="{{ url_for('static', filename='icons/team.jpg') }}" style="margin-left: 28%;" />
+</div>
 </body>
 </html>
 {% endblock %}
