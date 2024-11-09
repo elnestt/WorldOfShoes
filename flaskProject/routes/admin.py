@@ -12,6 +12,13 @@ def admin():
     orders = get_orders()
     return render_template('admin.html', orders=orders, feedback=feedback)
 
+@admin_bp.route('/admin/delete_feedback/<int:id>', methods=['POST'])
+def delete_feedback(id):
+    conn = get_db_connection()
+    conn.execute('DELETE FROM feedback WHERE id = ?', (id,))
+    conn.commit()
+    conn.close()
+    return redirect(url_for('admin.admin'))
 
 @admin_bp.route('/admin/order/<int:order_id>')
 def details(order_id):
