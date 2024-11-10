@@ -3,12 +3,13 @@ from flask import Flask, render_template, Blueprint, session
 from routes.admin import admin_bp
 from models import init_db
 from routes.catalog import catalog_bp
+from routes.feedback import feedback_bp
 
 app = Flask(__name__)
 app.secret_key = 'your_secret_key_here'  # Додаємо секретний ключ
 
 init_db() 
-
+app.register_blueprint(feedback_bp)
 app.register_blueprint(catalog_bp)
 app.register_blueprint(admin_bp)
 
@@ -32,11 +33,6 @@ def catalog():
 @app.route('/shop')
 def shop():
     return render_template('shop.html')
-
-@app.route('/contacts')
-def contacts():
-    return render_template('contacts.html')
-
 
 
 if __name__ == '__main__':
