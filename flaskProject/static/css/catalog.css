@@ -17,6 +17,7 @@ h1 {
 
 .button{
     font-size: 20px;
+    padding: 0px 5px;
     font-family: 'Montserrat', sans-serif;
     background-color:rgb(73, 95, 100) ;
     border-radius: 0.5rem;

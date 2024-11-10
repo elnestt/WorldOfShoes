@@ -35,8 +35,8 @@ def catalog2():
     return render_template('catalog2.html')
 
 @app.route('/location')
-def shop():
-    return render_template('shop.html')
+def location():
+    return render_template('location.html')
 
 
 if __name__ == '__main__':
