@@ -1,0 +1,38 @@
+/* Стилі для заголовка */
+h1 {
+    text-align: center;/*Текст по центру*/
+    font-weight: bold;
+    font-family: 'Montserrat', sans-serif;
+    background-color:rgb(73, 95, 100);
+    width: 300px;/*Довжина*/
+    height: 40px;/*Ширина*/
+    margin: 0 auto;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    font-size: 30px;/*Розмір шрифту*/
+    border-radius: 8px;
+    color: white;
+}
+
+
+.button{
+    font-size: 20px;
+    font-family: 'Montserrat', sans-serif;
+    background-color:rgb(73, 95, 100) ;
+    border-radius: 0.5rem;
+    font-weight: 500;
+    color: rgb(255, 255, 255) ;
+
+}
+
+.button:hover {
+    transition: opacity 0.3s ease, background-color 0.3s ease;
+    background-color: #3b5b54; /* Трохи темніший відтінок */
+    transform: scale(1.1); /* Збільшується на 5% */
+}
+
+/* Ефект при натисканні */
+.button:active {
+    transform: scale(0.95); /* Зменшується на 5% при натисканні */
+    background-color: #324943; /* Ще темніший відтінок */
+}

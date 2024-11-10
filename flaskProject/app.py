@@ -30,7 +30,11 @@ def home():
 def catalog():
     return render_template('catalog.html')
 
-@app.route('/shop')
+@app.route('/catalog2')
+def catalog2():
+    return render_template('catalog2.html')
+
+@app.route('/location')
 def shop():
     return render_template('shop.html')
 
