@@ -59,3 +59,17 @@ def delete_order(order_id):
     conn.execute('DELETE FROM orders WHERE id = ?', (order_id,))
     conn.commit()
     conn.close()
+
+# Додати відгук
+def add_feedback(name, email, message):
+    conn = get_db_connection()
+    conn.execute('INSERT INTO feedback (name, email, message) VALUES (?, ?, ?)', (name, email, message))
+    conn.commit()
+    conn.close()
+
+# Отримати всі відгуки
+def get_feedbacks():
+    conn = get_db_connection()
+    feedbacks = conn.execute('SELECT * FROM feedback').fetchall()
+    conn.close()
+    return feedbacks
