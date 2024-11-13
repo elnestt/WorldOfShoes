@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block title %}Профіль користувача{% endblock %}
+
+{% block content %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/profile.css') }}"> 
+</head>
+<body>
+    <header>
+        <h1>Ласкаво просимо, {{ user.username }}!</h1>
+    </header>
+    {% with messages = get_flashed_messages() %}
+                    {% if messages %}
+                    <div class="flash-messages">
+                        {% for message in messages %}
+                            <div class="flash_message"> <h4> {{ message }} </h4></div>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+                {% endwith %}
+
+    <main>
+        <section class="profile-info">
+            <h2>Інформація про профіль</h2>
+            <p><strong>Ім'я користувача:</strong> {{ user.username }}</p>
+            <p><strong>Email:</strong> {{ user.email }}</p>
+
+            <!-- Додайте інші деталі профілю за потреби -->
+        </section>
+
+        <section class="actions">
+            <a href="{{ url_for('login.logout') }}" class="button">Вийти</a>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Ваш сайт. Всі права захищені.</p>
+    </footer>
+</body>
+{% endblock %}

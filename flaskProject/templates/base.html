@@ -108,16 +108,16 @@
     content: url('static/icons/icons8-instagram.png');
 }
 .square {
-            width: 300px; /* Размер квадрата */
+            width: 300px; 
             height: 200px;
             display: flex;
             justify-content: center;
             align-items: center;
-            border: 12px solid rgb(104, 136, 143); /* Толстая рамка */
-            border-radius: 25px; /* Скругленные углы */
+            border: 12px solid rgb(104, 136, 143); 
+            border-radius: 25px; 
             font-size: 95px; 
             font-weight: bold;
-            color: rgb(79, 118, 111); /* Цвет текста */
+            color: rgb(79, 118, 111); 
             margin-top: 5%;
             margin-left: 0%;
             font-family: 'Montserrat', sans-serif;
@@ -158,6 +158,17 @@
                 <a href="/location" class="image-container3">
                     <img src="{{ url_for('static', filename='icons/pin_location_light.png') }}" width="57" height="57" style="margin-top: -13%;">
                 </a>
+                {% if 'user_id' in session %}
+                        <!-- Кнопка Профілю, коли користувач авторизований -->
+                        <a href="/profile" class="text-white hover:text-blue-200 transition-colors duration-300 hover:underline">
+                            <img src="{{ url_for('static', filename='icons/user_icon_light.png') }}" width="57" height="57" style="margin-top: -13%;">
+                        </a>
+                    {% else %}
+                        <!-- Кнопка "Зареєструватися", коли користувач не авторизований -->
+                        <a href="/register" class="image-container3">
+                            <img src="{{ url_for('static', filename='icons/pin_location_light.png') }}" width="57" height="57" style="margin-top: -13%;">
+                        </a>
+                    {% endif %}
                 </div>
             </div>
             <button id="mobile-menu-button" class="md:hidden text-white w-6 h-6 relative focus:outline-none">

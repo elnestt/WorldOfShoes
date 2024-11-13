@@ -145,7 +145,7 @@ h2 {
                         <th>Дії</th>
                     </tr>
                 </thead>
-                <tbosdy>
+                <tbody>
                 {% for item in feedback %} 
                 <td class="py-4 px-4 whitespace-nowrap">{{ item['id'] }}</td>
                         <td class="py-4 px-4 whitespace-nowrap">{{ item['name'] }}</td>
@@ -164,6 +164,27 @@ h2 {
             </table>
         </div>
     </div>
+    <h1 style="text-align: center; font-size: 30px; margin-top: 60px;">Користувачі</h1>
+    <div>
+    <table style="width: 90%; margin: 20px auto;" class="bg">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Ім'я</th>
+                <th>Email</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for user in users %} 
+            <tr>
+                <td class="py-4 px-4 whitespace-nowrap">{{ user['id'] }}</td>
+                <td class="py-4 px-4 whitespace-nowrap">{{ user['username'] }}</td>
+                <td class="py-4 px-4 whitespace-nowrap">{{ user['email'] }}</td>
+            </tr>
+            {% endfor %} 
+        </tbody>
+    </table>
 </div>
 
+</div>
 {% endblock %}

@@ -8,9 +8,11 @@ admin_bp = Blueprint('admin', __name__)
 def admin():
     conect = get_db_connection()
     feedback = conect.execute('SELECT * FROM feedback').fetchall()
+    users = conect.execute('SELECT * FROM users').fetchall()
     conect.close()
     orders = get_orders()
-    return render_template('admin.html', orders=orders, feedback=feedback)
+    return render_template('admin.html', orders=orders, feedback=feedback, users=users)
+
 
 @admin_bp.route('/admin/delete_feedback/<int:id>', methods=['POST'])
 def delete_feedback(id):
@@ -37,3 +39,4 @@ def update_order(order_id):
 def delete_order_route(order_id):
     delete_order(order_id)
     return redirect(url_for('admin.admin'))
+

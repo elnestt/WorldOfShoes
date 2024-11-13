@@ -1,5 +1,7 @@
 import sqlite3
 from datetime import datetime
+from werkzeug.security import generate_password_hash, check_password_hash
+
 
 def get_db_connection():
     conn = sqlite3.connect('db world of shoes.db')
@@ -60,16 +62,31 @@ def delete_order(order_id):
     conn.commit()
     conn.close()
 
-# Додати відгук
-def add_feedback(name, email, message):
+def register_user(username, email, password):
     conn = get_db_connection()
-    conn.execute('INSERT INTO feedback (name, email, message) VALUES (?, ?, ?)', (name, email, message))
+    user = conn.execute('SELECT * FROM users WHERE username = ? OR email = ?', (username, email)).fetchone()
+    if user:
+        conn.close()
+        return "Користувач з таким ім'ям або email вже існує."
+    
+    hashed_password = generate_password_hash(password)
+    conn.execute('INSERT INTO users (username, email, password) VALUES (?, ?, ?)', (username, email, hashed_password))
     conn.commit()
     conn.close()
+    return "Реєстрація успішна! Тепер ви можете увійти."
 
-# Отримати всі відгуки
-def get_feedbacks():
+# Функція входу користувача
+def login_user(username, password):
     conn = get_db_connection()
-    feedbacks = conn.execute('SELECT * FROM feedback').fetchall()
+    user = conn.execute('SELECT * FROM users WHERE username = ?', (username,)).fetchone()
     conn.close()
-    return feedbacks
+    if user and check_password_hash(user['password'], password):
+        return user
+    return None
+
+# Функція для отримання інформації про користувача за ID
+def get_user_by_id(user_id):
+    conn = get_db_connection()
+    user = conn.execute('SELECT * FROM users WHERE id = ?', (user_id,)).fetchone()
+    conn.close()
+    return user
