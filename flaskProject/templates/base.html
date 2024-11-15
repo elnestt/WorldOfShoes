@@ -107,6 +107,16 @@
 .image-container8 img:hover {
     content: url('static/icons/icons8-instagram.png');
 }
+
+.image-container9 img {
+     transition: 0.3s;
+}
+
+.image-container9 img:hover {
+    content: url('static/icons/user_icon_dark.png');
+}
+
+
 .square {
             width: 300px; 
             height: 200px;
@@ -122,6 +132,8 @@
             margin-left: 0%;
             font-family: 'Montserrat', sans-serif;
         }
+
+
 
     </style>
 </head>
@@ -165,8 +177,8 @@
                         </a>
                     {% else %}
                         <!-- Кнопка "Зареєструватися", коли користувач не авторизований -->
-                        <a href="/register" class="image-container3">
-                            <img src="{{ url_for('static', filename='icons/pin_location_light.png') }}" width="57" height="57" style="margin-top: -13%;">
+                        <a href="/register" class="image-container9">
+                            <img src="{{ url_for('static', filename='icons/user_icon_light.png') }}" width="57" height="57" style="margin-top: -13%;">
                         </a>
                     {% endif %}
                 </div>

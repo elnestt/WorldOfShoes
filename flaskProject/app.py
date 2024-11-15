@@ -3,6 +3,7 @@ from routes.admin import admin_bp
 from routes.catalog import catalog_bp
 from routes.feedback import feedback_bp
 from routes.login import login_bp
+from routes.api import api_bp
 from models import init_db
 
 app = Flask(__name__)
@@ -13,6 +14,8 @@ app.register_blueprint(feedback_bp)
 app.register_blueprint(catalog_bp)
 app.register_blueprint(admin_bp)
 app.register_blueprint(login_bp)
+app.register_blueprint(api_bp)
+
 
 
 @app.route('/')
