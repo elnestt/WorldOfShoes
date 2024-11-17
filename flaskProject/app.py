@@ -54,6 +54,26 @@ def bad_request(error):
 def internal_error(error):
     return jsonify({"error": "Internal server error, sorry"}), 500
 
+def create_response(data=None, message="", status="success", code=200):
+    return jsonify({
+        "status": status,
+        "message": message,
+        "data": data
+    }), code
+
+@app.route('/api/data', methods=['POST'])
+def handle_json_data():
+    data = request.get_json()
+    if not data or 'name' not in data:
+        return create_response(message="Invalid or missing JSON data", status="error", code=400)
+
+    name = data['name']
+    return create_response(data={"greeting": f"Hello, {name}!"}, message="Request successful")
+
+@app.route('/api/response', methods=['GET'])
+def json_response():
+    return create_response(data={"info": "This is a JSON response"})
+
 if __name__ == '__main__':
     app.run(debug=True)
 
