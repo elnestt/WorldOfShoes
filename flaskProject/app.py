@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for, session, flash
+from flask import Flask, render_template, request, redirect, url_for, session, flash, jsonify
 from routes.admin import admin_bp
 from routes.catalog import catalog_bp
 from routes.feedback import feedback_bp
@@ -42,6 +42,18 @@ def catalog2():
 def location():
     return render_template('location.html')
 
+@app.errorhandler(404)
+def not_found(error):
+    return jsonify({"error": "Resource not found, sorry"}), 404
+
+@app.errorhandler(400)
+def bad_request(error):
+    return jsonify({"error": "Bad request, sorry"}), 400
+
+@app.errorhandler(500)
+def internal_error(error):
+    return jsonify({"error": "Internal server error, sorry"}), 500
 
 if __name__ == '__main__':
     app.run(debug=True)
+
