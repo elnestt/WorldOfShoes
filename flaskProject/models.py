@@ -64,6 +64,8 @@ def delete_order(order_id):
     conn.commit()
     conn.close()
 
+    
+# Функція реєстрації користувача
 def register_user(username, email, password):
     conn = get_db_connection()
     user = conn.execute('SELECT * FROM users WHERE username = ? OR email = ?', (username, email)).fetchone()
@@ -77,6 +79,7 @@ def register_user(username, email, password):
     conn.close()
     return "Реєстрація успішна! Тепер ви можете увійти."
 
+
 # Функція входу користувача
 def login_user(email, password):
     conn = get_db_connection()
@@ -86,9 +89,18 @@ def login_user(email, password):
         return user
     return None
 
+
 # Функція для отримання інформації про користувача за ID
 def get_user_by_id(user_id):
     conn = get_db_connection()
     user = conn.execute('SELECT * FROM users WHERE id = ?', (user_id,)).fetchone()
     conn.close()
     return user
+
+
+# Функція для отримання даних про користувачів
+def get_users():
+    conn = get_db_connection()
+    users = conn.execute('SELECT * FROM users').fetchall()
+    conn.close()
+    return users

@@ -1,8 +1,10 @@
 from flask import Blueprint, jsonify, request
 from models import (
     get_db_connection,
+    get_users,
     get_products,
     get_orders,
+    login_user,
     get_order_details,
     add_order,
     update_order_status,
@@ -56,7 +58,7 @@ def create_order():
         return jsonify({'error': str(e)}), 500
 
 @api_bp.route('/api/orders/<int:order_id>', methods=['PUT'])
-def update_order(order_id):
+def update_order_status(order_id):
     try:
         data = request.get_json()
         if not data or 'status' not in data:
@@ -127,3 +129,12 @@ def delete_feedback(feedback_id):
         }), 200
     except Exception as e:
         return jsonify({'error': str(e)}), 500
+    
+# Users endpoints
+@api_bp.route('/api/users', methods=['GET'])
+def get_all_users():
+    try:
+        users = get_users()
+        return jsonify([dict(user) for user in users]), 200
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500 
