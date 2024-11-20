@@ -63,9 +63,7 @@ def delete_order(order_id):
     conn.execute('DELETE FROM orders WHERE id = ?', (order_id,))
     conn.commit()
     conn.close()
-    
-      
-# Функція реєстрації користувача
+
 def register_user(username, email, password):
     conn = get_db_connection()
     user = conn.execute('SELECT * FROM users WHERE username = ? OR email = ?', (username, email)).fetchone()

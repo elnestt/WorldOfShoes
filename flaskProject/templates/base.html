@@ -138,15 +138,7 @@
     </style>
 </head>
 
-{% with messages = get_flashed_messages() %}
-    {% if messages %}
-        <div class="flash-messages">
-            {% for message in messages %}
-                <div class="flash_message"> <h4> {{ message }} </h4></div>
-            {% endfor %}
-        </div>
-    {% endif %}
-{% endwith %}
+
 
 
 <body class="div1" style="background-color:rgb(255, 255, 255);">
@@ -217,7 +209,15 @@
         </div>
     </nav>
 
-    
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+        <div class="flash-messages">
+            {% for message in messages %}
+                <div class="flash_message"> <h4> {{ message }} </h4></div>
+            {% endfor %}
+        </div>
+    {% endif %}
+{% endwith %}
     {% block content %}
     
     <div style="max-width: 3000px; margin: -80px auto;">
