@@ -137,6 +137,7 @@
 
     </style>
 </head>
+
 <body class="div1" style="background-color:rgb(255, 255, 255);">
    <nav class="div2" style="background-color:rgb(73, 95, 100); height:50px;">
         <div class="container mx-auto flex justify-between items-center">
@@ -177,7 +178,7 @@
                         </a>
                     {% else %}
                         <!-- Кнопка "Зареєструватися", коли користувач не авторизований -->
-                        <a href="/register" class="image-container9">
+                        <a href="/login" class="image-container9">
                             <img src="{{ url_for('static', filename='icons/user_icon_light.png') }}" width="57" height="57" style="margin-top: -13%;">
                         </a>
                     {% endif %}

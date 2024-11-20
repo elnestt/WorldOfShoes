@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for, session, flash, jsonify
+from flask import Flask, render_template, jsonify
 from routes.admin import admin_bp
 from routes.catalog import catalog_bp
 from routes.feedback import feedback_bp
