@@ -82,15 +82,7 @@
         }
     </style>
 </head>
-{% with messages = get_flashed_messages() %}
-                    {% if messages %}
-                    <div class="flash-messages">
-                        {% for message in messages %}
-                            <div class="flash_message"> <h4> {{ message }} </h4></div>
-                        {% endfor %}
-                    </div>
-                    {% endif %}
-                {% endwith %}
+
 
 <body>
     <div class="register-container">

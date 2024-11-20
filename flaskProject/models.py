@@ -14,7 +14,7 @@ def init_db():
     conn.execute('CREATE TABLE IF NOT EXISTS products (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, price REAL, image TEXT)')
     conn.execute('CREATE TABLE IF NOT EXISTS orders (id INTEGER PRIMARY KEY AUTOINCREMENT, email TEXT, address TEXT, total_price REAL, status TEXT, date TEXT)')
     conn.execute('CREATE TABLE IF NOT EXISTS order_items (id INTEGER PRIMARY KEY AUTOINCREMENT, order_id INTEGER, product_id INTEGER, quantity INTEGER, FOREIGN KEY (order_id) REFERENCES orders (id), FOREIGN KEY (product_id) REFERENCES products (id))')
-    conn.execute('CREATE TABLE IF NOT EXISTS users(id INTEGER PRIMARY KEY AUTOINCREMENT, username TEXT NOT NULL, email TEXT NOT NULL, password INTEGER NOT NULL UNIQUE)')
+    conn.execute('CREATE TABLE IF NOT EXISTS users(id INTEGER PRIMARY KEY AUTOINCREMENT, username TEXT NOT NULL, email TEXT NOT NULL, password INTEGER NOT NULL UNIQUE, is_admin INTEGER)')
 
     conn.commit()
     conn.close()
@@ -64,8 +64,13 @@ def delete_order(order_id):
     conn.commit()
     conn.close()
 
+<<<<<<< HEAD
     
 # Функція реєстрації користувача
+=======
+
+
+>>>>>>> a55620f838ffea13f5ed80551e7985e4487edbe4
 def register_user(username, email, password):
     conn = get_db_connection()
     user = conn.execute('SELECT * FROM users WHERE username = ? OR email = ?', (username, email)).fetchone()
@@ -74,7 +79,7 @@ def register_user(username, email, password):
         return "Користувач з таким ім'ям або email вже існує."
     
     hashed_password = generate_password_hash(password)
-    conn.execute('INSERT INTO users (username, email, password) VALUES (?, ?, ?)', (username, email, hashed_password))
+    conn.execute('INSERT INTO users (username, email, password, is_admin) VALUES (?, ?, ?, ?)', (username, email, hashed_password, 0))
     conn.commit()
     conn.close()
     return "Реєстрація успішна! Тепер ви можете увійти."
