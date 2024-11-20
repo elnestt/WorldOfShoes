@@ -10,21 +10,14 @@
     <header>
         <h1>Ласкаво просимо, {{ user.username }}!</h1>
     </header>
-    {% with messages = get_flashed_messages() %}
-                    {% if messages %}
-                    <div class="flash-messages">
-                        {% for message in messages %}
-                            <div class="flash_message"> <h4> {{ message }} </h4></div>
-                        {% endfor %}
-                    </div>
-                    {% endif %}
-                {% endwith %}
+
 
     <main>
         <section class="profile-info">
             <h2>Інформація про профіль</h2>
             <p><strong>Ім'я користувача:</strong> {{ user.username }}</p>
             <p><strong>Email:</strong> {{ user.email }}</p>
+            <p><strong>is_admin:</strong> {{ user.is_admin }}</p>
 
         </section>
 
