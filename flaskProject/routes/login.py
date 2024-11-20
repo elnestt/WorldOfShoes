@@ -28,16 +28,16 @@ def register():
 @login_bp.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
-        username = request.form['username']
+        email = request.form['email']
         password = request.form['password']
-        user = login_user(username, password)
+        user = login_user(email, password)
         if user:
             session['user_id'] = user['id']
             session['username'] = user['username']
             flash('Login successful!')
             return redirect(url_for('login.profile'))
         else:
-            flash('Invalid username or password.')
+            flash('Invalid email or password.')
     return render_template('login.html')
 
 @login_bp.route('/profile')

@@ -78,9 +78,9 @@ def register_user(username, email, password):
     return "Реєстрація успішна! Тепер ви можете увійти."
 
 # Функція входу користувача
-def login_user(username, password):
+def login_user(email, password):
     conn = get_db_connection()
-    user = conn.execute('SELECT * FROM users WHERE username = ?', (username,)).fetchone()
+    user = conn.execute('SELECT * FROM users WHERE email = ?', (email,)).fetchone()
     conn.close()
     if user and check_password_hash(user['password'], password):
         return user
