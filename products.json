@@ -1,0 +1,146 @@
+[
+    {
+        "id": 1,
+        "image": "/static/Sneackers/Force.jpg",
+        "name": "Nike Air Force 1",
+        "price": 3475.99
+    },
+    {
+        "id": 2,
+        "image": "/static/Sneackers/Airmax.jpg",
+        "name": "Nike Air Max 1",
+        "price": 3558.99
+    },
+    {
+        "id": 3,
+        "image": "/static/Sneackers/Jordan1.jpg",
+        "name": "Nike Air Jordan 1",
+        "price": 3959.99
+    },
+    {
+        "id": 4,
+        "image": "/static/Sneackers/Pink.jpg",
+        "name": "Nike ACG Lowcate",
+        "price": 3009.99
+    },
+    {
+        "id": 5,
+        "image": "/static/Sneackers/Browm.jpg",
+        "name": "Nike INITIATOR",
+        "price": 3459.99
+    },
+    {
+        "id": 6,
+        "image": "/static/Sneackers/Vomero.jpg",
+        "name": "Nike zoom Vomero 5",
+        "price": 3090.99
+    },
+    {
+        "id": 7,
+        "image": "/static/Sneackers/Jordan4.png",
+        "name": "Nike Air Jordan 4",
+        "price": 2446.99
+    },
+    {
+        "id": 8,
+        "image": "/static/Sneackers/Trainer.png",
+        "name": "Nike Air Trainer 1",
+        "price": 4789.99
+    },
+    {
+        "id": 9,
+        "image": "/static/Sneackers/Jordan11.jpg",
+        "name": "Nike Jordan Retro 11",
+        "price": 3121.99
+    },
+    {
+        "id": 10,
+        "image": "/static/Sneackers/mada.png",
+        "name": "Nike Acg Air Mada Low",
+        "price": 3602.99
+    },
+    {
+        "id": 11,
+        "image": "/static/Sneackers/Cortez.png",
+        "name": "Nike Cortez",
+        "price": 4089.99
+    },
+    {
+        "id": 12,
+        "image": "/static/Sneackers/Kukini.png",
+        "name": "Nike Air Kukini",
+        "price": 4500.99
+    },
+    {
+        "id": 25,
+        "image": "/static/Sneackers/Force.jpg",
+        "name": "Nike Air Force 1",
+        "price": 3475.0
+    },
+    {
+        "id": 26,
+        "image": "/static/Sneackers/Airmax.jpg",
+        "name": "Nike Air Max 1",
+        "price": 3558.0
+    },
+    {
+        "id": 27,
+        "image": "/static/Sneackers/Jordan1.jpg",
+        "name": "Nike Air Jordan 1",
+        "price": 3959.0
+    },
+    {
+        "id": 28,
+        "image": "/static/Sneackers/Pink.jpg",
+        "name": "Nike ACG Lowcate",
+        "price": 3009.0
+    },
+    {
+        "id": 29,
+        "image": "/static/Sneackers/Browm.jpg",
+        "name": "Nike INITIATOR",
+        "price": 3459.0
+    },
+    {
+        "id": 30,
+        "image": "/static/Sneackers/Vomero.jpg",
+        "name": "Nike zoom Vomero 5",
+        "price": 3090.0
+    },
+    {
+        "id": 31,
+        "image": "/static/Sneackers/Jordan4.png",
+        "name": "Nike Air Jordan 4",
+        "price": 2446.0
+    },
+    {
+        "id": 32,
+        "image": "/static/Sneackers/Trainer.png",
+        "name": "Nike Air Trainer 1",
+        "price": 4789.0
+    },
+    {
+        "id": 33,
+        "image": "/static/Sneackers/Jordan11.jpg",
+        "name": "Nike Jordan Retro 11",
+        "price": 3121.0
+    },
+    {
+        "id": 34,
+        "image": "/static/Sneackers/mada.png",
+        "name": "Nike Acg Air Mada Low",
+        "price": 3602.0
+    },
+    {
+        "id": 35,
+        "image": "/static/Sneackers/Cortez.png",
+        "name": "Nike Cortez",
+        "price": 4089.0
+    },
+    {
+        "id": 36,
+        "image": "/static/Sneackers/Kukini.png",
+        "name": "Nike Air Kukini",
+        "price": 4500.0
+    }
+]
