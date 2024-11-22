@@ -4,7 +4,7 @@ from routes.catalog import catalog_bp
 from routes.feedback import feedback_bp
 from routes.login import login_bp
 from routes.api import api_bp
-from models import init_db
+from models import init_db, search_in_database
 import json
 
 app = Flask(__name__)
