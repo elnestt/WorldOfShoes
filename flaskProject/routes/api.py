@@ -1,4 +1,4 @@
-from flask import Blueprint, jsonify, request
+from flask import Blueprint, jsonify, request, json
 from models import (
     get_db_connection,
     get_products,
@@ -8,7 +8,7 @@ from models import (
     update_order_status,
     delete_order
 )
-
+import sqlite3
 api_bp = Blueprint('api', __name__)
 
 # Products endpoints
@@ -21,7 +21,7 @@ def get_all_products():
         return jsonify({'error': str(e)}), 500
 
 # Orders endpoints
-@api_bp.route('/api/orders', methods=['GET'])
+@api_bp.route('/api/order', methods=['GET'])
 def get_all_orders():
     try:
         orders = get_orders()
@@ -29,7 +29,7 @@ def get_all_orders():
     except Exception as e:
         return jsonify({'error': str(e)}), 500
 
-@api_bp.route('/api/orders/<int:order_id>', methods=['GET'])
+@api_bp.route('/api/order/<int:order_id>', methods=['GET'])
 def get_order(order_id):
     try:
         order, items = get_order_details(order_id)
@@ -43,7 +43,7 @@ def get_order(order_id):
     except Exception as e:
         return jsonify({'error': str(e)}), 500
 
-@api_bp.route('/api/orders', methods=['POST'])
+@api_bp.route('/api/order', methods=['POST'])
 def create_order():
     try:
         data = request.get_json()
@@ -55,7 +55,7 @@ def create_order():
     except Exception as e:
         return jsonify({'error': str(e)}), 500
 
-@api_bp.route('/api/orders/<int:order_id>', methods=['PUT'])
+@api_bp.route('/api/order/<int:order_id>', methods=['PUT'])
 def update_order(order_id):
     try:
         data = request.get_json()
@@ -67,7 +67,7 @@ def update_order(order_id):
     except Exception as e:
         return jsonify({'error': str(e)}), 500
 
-@api_bp.route('/api/orders/<int:order_id>', methods=['DELETE'])
+@api_bp.route('/api/order/<int:order_id>', methods=['DELETE'])
 def remove_order(order_id):
     try:
         delete_order(order_id)
@@ -76,7 +76,7 @@ def remove_order(order_id):
         return jsonify({'error': str(e)}), 500
 
 # Feedback endpoints
-@api_bp.route('/api/feedback', methods=['GET'])
+@api_bp.route('/api/contacts', methods=['GET'])
 def get_all_feedback():
     try:
         conn = get_db_connection()
@@ -86,7 +86,7 @@ def get_all_feedback():
     except Exception as e:
         return jsonify({'error': str(e)}), 500
 
-@api_bp.route('/api/feedback', methods=['POST'])
+@api_bp.route('/api/contacts', methods=['POST'])
 def create_feedback():
     try:
         data = request.get_json()
@@ -104,7 +104,7 @@ def create_feedback():
     except Exception as e:
         return jsonify({'error': str(e)}), 500
 
-@api_bp.route('/api/feedback/<int:feedback_id>', methods=['DELETE'])
+@api_bp.route('/api/contacts/<int:feedback_id>', methods=['DELETE'])
 def delete_feedback(feedback_id):
     """
     Видалення одного відгуку за ID
@@ -127,3 +127,4 @@ def delete_feedback(feedback_id):
         }), 200
     except Exception as e:
         return jsonify({'error': str(e)}), 500
+

@@ -6,19 +6,29 @@ from routes.login import login_bp
 from routes.api import api_bp
 from models import init_db
 import json
+import sqlite3
 
 app = Flask(__name__)
 app.secret_key = 'your_secret_key_here'  # Додаємо секретний ключ
 
-# Функція для завантаження даних з JSON
-def load_products():
-    with open('products.json', 'r') as file:  # Вказуємо шлях до вашого JSON-файлу
-        return json.load(file)
+init_db() 
+app.register_blueprint(feedback_bp)
+app.register_blueprint(catalog_bp)
+app.register_blueprint(admin_bp)
+app.register_blueprint(login_bp)
+app.register_blueprint(api_bp)
 
-# Функція для пошуку кросівок за назвою
+# Функція для підключення до бази даних SQLite
+def get_db_connection():
+    conn = sqlite3.connect('flaskProject/db world of shoes.db')  # Замініть на назву вашої бази даних
+    conn.row_factory = sqlite3.Row  # Це дозволяє повертати дані як словники
+    return conn
+
 def get_shoes_by_name(name):
-    products = load_products()  # Завантажуємо дані з JSON
-    return [product for product in products if name.lower() in product['name'].lower()]  # Фільтруємо дані
+    conn = get_db_connection()  # Викликаємо функцію для створення з'єднання
+    query = "SELECT * FROM products WHERE LOWER(name) LIKE ?"  # Запит для пошуку товарів
+    rows = conn.execute(query, (f'%{name.lower()}%',)).fetchall()  # Виконання запиту
+    conn.close()  # Закриття з'єднання
 
 # Ендпоінт для пошуку кросівок
 @app.route('/api/products', methods=['POST'])
@@ -46,15 +56,6 @@ def search_shoes():
         "message": "Shoes found successfully",
         "data": shoes
     }), 200
-
-init_db() 
-app.register_blueprint(feedback_bp)
-app.register_blueprint(catalog_bp)
-app.register_blueprint(admin_bp)
-app.register_blueprint(login_bp)
-app.register_blueprint(api_bp)
-
-
 
 @app.route('/')
 def base():
