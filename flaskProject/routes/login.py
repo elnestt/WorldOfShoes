@@ -1,5 +1,6 @@
 from flask import Blueprint, render_template, request, redirect, url_for, session, flash
-from models import login_user, get_user_by_id, register_user
+from models import login_user, get_user_by_id, register_user, get_db_connection
+from werkzeug.security import check_password_hash
 
 
 login_bp = Blueprint('login', __name__)
@@ -25,20 +26,43 @@ def register():
             return redirect(url_for('login.register'))
     return render_template('register.html')
 
+
+
 @login_bp.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
         email = request.form['email']
         password = request.form['password']
-        user = login_user(email, password)
-        if user:
+
+        conn = get_db_connection()
+        cursor = conn.cursor()
+        
+        # Отримання інформації про користувача за email
+        user = cursor.execute('SELECT * FROM users WHERE email = ?', (email,)).fetchone()
+        
+        if user and check_password_hash(user['password'], password):
             session['user_id'] = user['id']
-            session['username'] = user['username']
-            flash('Login successful!')
-            return redirect(url_for('login.profile'))
+            session['email'] = user['email']
+            is_admin = bool(user['is_admin'])  # Перевірка статусу адміністратора
+            
+            # Встановлення додаткових прав, якщо користувач — адміністратор
+            if is_admin:
+                session['is_admin'] = True
+                flash("Ви увійшли як адміністратор")
+            else:
+                session['is_admin'] = False
+                flash("Ви увійшли як звичайний користувач")
+            
+            conn.close()
+            return redirect(url_for('login.profile'))  # Перехід до сторінки акаунта
+            
         else:
-            flash('Invalid email or password.')
+            flash("Логін або пароль невірний")
+            conn.close()
     return render_template('login.html')
+    
+
+
 
 @login_bp.route('/profile')
 def profile():

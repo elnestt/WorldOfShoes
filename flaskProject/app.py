@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 from flask import Flask, render_template, request, redirect, url_for, session, flash, jsonify
+=======
+from flask import Flask, render_template, jsonify, request
+>>>>>>> 7e4cc29f7a9e9ea0c61c7023c9e4a8c33538a36d
 from routes.admin import admin_bp
 from routes.catalog import catalog_bp
 from routes.feedback import feedback_bp
