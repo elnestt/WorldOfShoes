@@ -1,177 +1,92 @@
-from flask import Blueprint, jsonify, request, json
+from flask import Blueprint, jsonify, request,session
 from models import (
-    get_db_connection,
     get_users,
     get_products,
     get_orders,
     get_order_details,
     add_order,
     update_order_status,
-    delete_order
+    delete_order,
+    get_user_by_id,
+    register_user,
+    login_user
 )
 api_bp = Blueprint('api', __name__)
 
-# Products endpoints
+#Get all products
 @api_bp.route('/api/products', methods=['GET'])
-def get_all_products():
+def get_products_api():
     try:
         products = get_products()
         return jsonify([dict(product) for product in products]), 200
     except Exception as e:
         return jsonify({'error': str(e)}), 500
-    
 
-
-
-def get_shoes_by_name(name):
-    conn = get_db_connection()  # Підключення до БД
-    query = "SELECT * FROM products WHERE LOWER(name) LIKE ?"  # Запит до бази
-    rows = conn.execute(query, (f'%{name.lower()}%',)).fetchall()  # Виконання запиту
-    conn.close()  # Закриття з'єднання
-    return rows
-
-# Ендпоінт для пошуку товарів
-@api_bp.route('/api/products/search', methods=['POST'])
-def search_shoes():
-    name = request.form.get('name')  # Отримуємо значення поля "name"
-
-    if not name:  # Якщо поле відсутнє або порожнє
-        return jsonify({
-            "status": "error",
-            "message": "The 'name' field is required",
-            "data": None
-        }), 400
-
-    shoes = get_shoes_by_name(name)  # Виклик функції пошуку
-
-    if not shoes:
-        return jsonify({
-            "status": "error",
-            "message": f"No shoes found with name '{name}'",
-            "data": None
-        }), 404
-
-    return jsonify({
-        "status": "success",
-        "message": "Shoes found successfully",
-        "data": [dict(row) for row in shoes]
-    }), 200
-
-
-
-# Orders endpoints
-@api_bp.route('/api/order', methods=['GET'])
-def get_all_orders():
+#Get all orders
+@api_bp.route('/api/orders', methods=['GET'])
+def get_orders_api():
     try:
         orders = get_orders()
         return jsonify([dict(order) for order in orders]), 200
     except Exception as e:
-        return jsonify({'error': str(e)}), 500
-
-@api_bp.route('/api/order/<int:order_id>', methods=['GET'])
-def get_order(order_id):
+        return jsonify({'error': str(e)}), 500  
+    
+#Get order details
+@api_bp.route('/api/orders/<int:order_id>', methods=['GET'])
+def get_order_details_api(order_id):
     try:
         order, items = get_order_details(order_id)
         if not order:
             return jsonify({'error': 'Order not found'}), 404
-        
         return jsonify({
             'order': dict(order),
             'items': [dict(item) for item in items]
         }), 200
     except Exception as e:
-        return jsonify({'error': str(e)}), 500
+        return jsonify({'error': str(e)}), 500 
 
-@api_bp.route('/api/order', methods=['POST'])
-def create_order():
+#Add order
+@api_bp.route('/api/orders', methods=['POST'])
+def add_order_api():
     try:
         data = request.get_json()
-        if not data or 'email' not in data or 'address' not in data or 'cart' not in data:
-            return jsonify({'error': 'Missing required fields'}), 400
-        
-        add_order(data['email'], data['address'], data['cart'])
-        return jsonify({'message': 'Order created successfully'}), 201
+        email = data.get('email')
+        address = data.get('address')
+        cart = data.get('cart')
+
+        if not email or not address or not cart:
+            return jsonify({'error': 'Missing email, address, or cart'}), 400
+
+        add_order(email, address, cart)
+        return jsonify({'message': 'Order added successfully'}), 201
     except Exception as e:
         return jsonify({'error': str(e)}), 500
-
-
-
+    
+#Update order status
 @api_bp.route('/api/orders/<int:order_id>', methods=['PUT'])
-def update_order_status(order_id):
-
+def update_order_status_api(order_id):
     try:
         data = request.get_json()
-        if not data or 'status' not in data:
-            return jsonify({'error': 'Status is required'}), 400
-        
-        update_order_status(order_id, data['status'])
-        return jsonify({'message': 'Order updated successfully'}), 200
+        status = data.get('status')
+
+        if not status:
+            return jsonify({'error': 'Missing status'}), 400
+
+        update_order_status(order_id, status)
+        return jsonify({'message': 'Order status updated successfully'}), 200
     except Exception as e:
         return jsonify({'error': str(e)}), 500
-
-@api_bp.route('/api/order/<int:order_id>', methods=['DELETE'])
-def remove_order(order_id):
+    
+#Delete order
+@api_bp.route('/api/orders/<int:order_id>', methods=['DELETE'])
+def delete_order_api(order_id):
     try:
         delete_order(order_id)
         return jsonify({'message': 'Order deleted successfully'}), 200
     except Exception as e:
         return jsonify({'error': str(e)}), 500
-
-# Feedback endpoints
-@api_bp.route('/api/contacts', methods=['GET'])
-def get_all_feedback():
-    try:
-        conn = get_db_connection()
-        feedback = conn.execute('SELECT * FROM feedback').fetchall()
-        conn.close()
-        return jsonify([dict(f) for f in feedback]), 200
-    except Exception as e:
-        return jsonify({'error': str(e)}), 500
-
-@api_bp.route('/api/contacts', methods=['POST'])
-def create_feedback():
-    try:
-        data = request.get_json()
-        if not data or not all(k in data for k in ['name', 'email', 'message']):
-            return jsonify({'error': 'All fields are required'}), 400
-        
-        conn = get_db_connection()
-        conn.execute(
-            'INSERT INTO feedback (name, email, message) VALUES (?, ?, ?)',
-            (data['name'], data['email'], data['message'])
-        )
-        conn.commit()
-        conn.close()
-        return jsonify({'message': 'Feedback submitted successfully'}), 201
-    except Exception as e:
-        return jsonify({'error': str(e)}), 500
-
-@api_bp.route('/api/contacts/<int:feedback_id>', methods=['DELETE'])
-def delete_feedback(feedback_id):
-    """
-    Видалення одного відгуку за ID
-    """
-    try:
-        conn = get_db_connection()
-        # Перевіряємо чи існує відгук
-        feedback = conn.execute('SELECT * FROM feedback WHERE id = ?', (feedback_id,)).fetchone()
-        
-        if not feedback:
-            return jsonify({'error': 'Feedback not found'}), 404
-            
-        conn.execute('DELETE FROM feedback WHERE id = ?', (feedback_id,))
-        conn.commit()
-        conn.close()
-        
-        return jsonify({
-            'message': 'Feedback deleted successfully',
-            'deleted_id': feedback_id
-        }), 200
-    except Exception as e:
-        return jsonify({'error': str(e)}), 500
-
     
-# Users endpoints
+#Get all users
 @api_bp.route('/api/users', methods=['GET'])
 def get_all_users():
     try:
@@ -179,3 +94,52 @@ def get_all_users():
         return jsonify([dict(user) for user in users]), 200
     except Exception as e:
         return jsonify({'error': str(e)}), 500 
+    
+#Get user by id
+@api_bp.route('/api/users/<int:user_id>', methods=['GET'])
+def get_user_by_id_api(user_id):
+    try:
+        user = get_user_by_id(user_id)
+        if not user:
+            return jsonify({'error': 'User not found'}), 404
+        return jsonify(dict(user)), 200
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+
+#Register user
+@api_bp.route('/api/register', methods=['POST'])
+def register_user_api():
+    try:
+        data = request.get_json()
+        username = data.get('username')
+        email = data.get('email')
+        password = data.get('password')
+
+        if not username or not email or not password:
+            return jsonify({'error': 'Missing username, email, or password'}), 400
+
+        result = register_user(username, email, password)
+        return jsonify({'message': result}), 201 if "успішна" in result else 400
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+    
+#Login user
+@api_bp.route('/api/login', methods=['POST'])
+def login_user_api():
+    try:
+        data = request.get_json()
+        email = data.get('email')
+        password = data.get('password')
+
+        if not email or not password:
+            return jsonify({'error': 'Missing email or password'}), 400
+
+        user = login_user(email, password)
+        if user:
+            session['user_id'] = user['id']
+            session['email'] = user['email']
+            return jsonify({'message': 'Login successful', 'user': {'id': user['id'], 'email': user['email']}}), 200
+
+        return jsonify({'error': 'Invalid email or password'}), 401
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500

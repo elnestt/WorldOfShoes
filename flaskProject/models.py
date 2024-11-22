@@ -8,6 +8,7 @@ def get_db_connection():
     conn.row_factory = sqlite3.Row
     return conn
 
+#Ініціалізація бази даних
 def init_db():
     conn = get_db_connection()
     conn.execute('CREATE TABLE IF NOT EXISTS feedback (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, email TEXT, message TEXT)')
@@ -19,18 +20,20 @@ def init_db():
     conn.commit()
     conn.close()
 
+#Отримати товари
 def get_products():
     conn = get_db_connection()
     products = conn.execute('SELECT * FROM products').fetchall()
     conn.close()
     return products
 
+#Додати замовлення
 def add_order(email, address, cart):
     conn = get_db_connection()
     total_price = sum(item['price'] * item['quantity'] for item in cart.values())
     cur = conn.cursor()
     cur.execute('INSERT INTO orders (email, address, total_price, status, date) VALUES (?, ?, ?, ?, ?)',
-                (email, address, total_price, 'New', datetime.now().strftime("%Y-%m-%d %H:%M:%S")))
+                (email, address, total_price, 'Нове замолення', datetime.now().strftime("%Y-%m-%d %H:%M:%S")))
     order_id = cur.lastrowid
     for item in cart.values():
         cur.execute('INSERT INTO order_items (order_id, product_id, quantity) VALUES (?, ?, ?)',
@@ -38,12 +41,14 @@ def add_order(email, address, cart):
     conn.commit()
     conn.close()
 
+#Отримати всі замовлення
 def get_orders():
     conn = get_db_connection()
     orders = conn.execute('SELECT * FROM orders').fetchall()
     conn.close()
     return orders
 
+#Отримати деталі замовлення
 def get_order_details(order_id):
     conn = get_db_connection()
     order = conn.execute('SELECT * FROM orders WHERE id = ?', (order_id,)).fetchone()
@@ -51,12 +56,14 @@ def get_order_details(order_id):
     conn.close()
     return order, items
 
+#Оновлення статусу замовлення
 def update_order_status(order_id, status):
     conn = get_db_connection()
     conn.execute('UPDATE orders SET status = ? WHERE id = ?', (status, order_id))
     conn.commit()
     conn.close()
 
+#Видалення замовлення
 def delete_order(order_id):
     conn = get_db_connection()
     conn.execute('DELETE FROM order_items WHERE order_id = ?', (order_id,))
@@ -64,6 +71,7 @@ def delete_order(order_id):
     conn.commit()
     conn.close()
 
+#Реєстрація користувача
 def register_user(username, email, password):
     conn = get_db_connection()
     user = conn.execute('SELECT * FROM users WHERE username = ? OR email = ?', (username, email)).fetchone()
@@ -71,12 +79,12 @@ def register_user(username, email, password):
         conn.close()
         return "Користувач з таким ім'ям або email вже існує."
     
+    #Хешування паролю
     hashed_password = generate_password_hash(password)
     conn.execute('INSERT INTO users (username, email, password, is_admin) VALUES (?, ?, ?, ?)', (username, email, hashed_password, 0))
     conn.commit()
     conn.close()
     return "Реєстрація успішна! Тепер ви можете увійти."
-
 
 # Функція входу користувача
 def login_user(email, password):
@@ -87,14 +95,12 @@ def login_user(email, password):
         return user
     return None
 
-
 # Функція для отримання інформації про користувача за ID
 def get_user_by_id(user_id):
     conn = get_db_connection()
     user = conn.execute('SELECT * FROM users WHERE id = ?', (user_id,)).fetchone()
     conn.close()
     return user
-
 
 # Функція для отримання даних про користувачів
 def get_users():
