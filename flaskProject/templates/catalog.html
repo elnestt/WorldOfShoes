@@ -4,10 +4,11 @@
 {% block content %}
 <link rel="stylesheet" href="{{ url_for('static', filename='css/catalog.css') }}">
 <h1>КАТАЛОГ</h1>
-<form action="/search" method="get">
-    <input type="text" name="query" placeholder="Пошук..." required>
+<form action="{{ url_for('api.search_shoes') }}" method="POST">
+    <input type="text" name="name" placeholder="Пошук..." required>
     <button type="submit">Шукати</button>
 </form>
+
 
 <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
     {% for product in products %}

@@ -4,13 +4,11 @@ from models import (
     get_users,
     get_products,
     get_orders,
-    login_user,
     get_order_details,
     add_order,
     update_order_status,
     delete_order
 )
-import sqlite3
 api_bp = Blueprint('api', __name__)
 
 # Products endpoints
@@ -21,6 +19,45 @@ def get_all_products():
         return jsonify([dict(product) for product in products]), 200
     except Exception as e:
         return jsonify({'error': str(e)}), 500
+    
+
+
+
+def get_shoes_by_name(name):
+    conn = get_db_connection()  # Підключення до БД
+    query = "SELECT * FROM products WHERE LOWER(name) LIKE ?"  # Запит до бази
+    rows = conn.execute(query, (f'%{name.lower()}%',)).fetchall()  # Виконання запиту
+    conn.close()  # Закриття з'єднання
+    return rows
+
+# Ендпоінт для пошуку товарів
+@api_bp.route('/api/products/search', methods=['POST'])
+def search_shoes():
+    name = request.form.get('name')  # Отримуємо значення поля "name"
+
+    if not name:  # Якщо поле відсутнє або порожнє
+        return jsonify({
+            "status": "error",
+            "message": "The 'name' field is required",
+            "data": None
+        }), 400
+
+    shoes = get_shoes_by_name(name)  # Виклик функції пошуку
+
+    if not shoes:
+        return jsonify({
+            "status": "error",
+            "message": f"No shoes found with name '{name}'",
+            "data": None
+        }), 404
+
+    return jsonify({
+        "status": "success",
+        "message": "Shoes found successfully",
+        "data": [dict(row) for row in shoes]
+    }), 200
+
+
 
 # Orders endpoints
 @api_bp.route('/api/order', methods=['GET'])
@@ -57,13 +94,11 @@ def create_order():
     except Exception as e:
         return jsonify({'error': str(e)}), 500
 
-<<<<<<< HEAD
-@api_bp.route('/api/order/<int:order_id>', methods=['PUT'])
-def update_order(order_id):
-=======
+
+
 @api_bp.route('/api/orders/<int:order_id>', methods=['PUT'])
 def update_order_status(order_id):
->>>>>>> 7e4cc29f7a9e9ea0c61c7023c9e4a8c33538a36d
+
     try:
         data = request.get_json()
         if not data or 'status' not in data:
@@ -134,9 +169,7 @@ def delete_feedback(feedback_id):
         }), 200
     except Exception as e:
         return jsonify({'error': str(e)}), 500
-<<<<<<< HEAD
 
-=======
     
 # Users endpoints
 @api_bp.route('/api/users', methods=['GET'])
@@ -146,4 +179,3 @@ def get_all_users():
         return jsonify([dict(user) for user in users]), 200
     except Exception as e:
         return jsonify({'error': str(e)}), 500 
->>>>>>> 7e4cc29f7a9e9ea0c61c7023c9e4a8c33538a36d

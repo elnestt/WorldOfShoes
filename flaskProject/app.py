@@ -1,11 +1,10 @@
-from flask import Flask, render_template, request, redirect, url_for, session, flash, jsonify
+from flask import Flask, render_template, request, jsonify
 from routes.admin import admin_bp
 from routes.catalog import catalog_bp
 from routes.feedback import feedback_bp
 from routes.login import login_bp
 from routes.api import api_bp
-from models import init_db, search_in_database
-import json
+from models import init_db
 import sqlite3
 
 app = Flask(__name__)
@@ -24,38 +23,7 @@ def get_db_connection():
     conn.row_factory = sqlite3.Row  # Це дозволяє повертати дані як словники
     return conn
 
-def get_shoes_by_name(name):
-    conn = get_db_connection()  # Викликаємо функцію для створення з'єднання
-    query = "SELECT * FROM products WHERE LOWER(name) LIKE ?"  # Запит для пошуку товарів
-    rows = conn.execute(query, (f'%{name.lower()}%',)).fetchall()  # Виконання запиту
-    conn.close()  # Закриття з'єднання
 
-# Ендпоінт для пошуку кросівок
-@app.route('/api/products', methods=['POST'])
-def search_shoes():
-    data = request.get_json()  # Отримуємо JSON-запит
-    if not data or 'name' not in data:
-        return jsonify({
-            "status": "error",
-            "message": "The 'name' field is required",
-            "data": None
-        }), 400
-
-    name = data['name']
-    shoes = get_shoes_by_name(name)
-
-    if not shoes:
-        return jsonify({
-            "status": "error",
-            "message": f"No shoes found with name '{name}'",
-            "data": None
-        }), 404
-
-    return jsonify({
-        "status": "success",
-        "message": "Shoes found successfully",
-        "data": shoes
-    }), 200
 
 @app.route('/')
 def base():
