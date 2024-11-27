@@ -26,10 +26,16 @@ h1 {
 
 }
 
-.button:hover {
+ .button:hover {
     transition: opacity 0.3s ease, background-color 0.3s ease;
-    background-color: #3b5b54; /* Трохи темніший відтінок */
-    transform: scale(1.1); /* Збільшується на 5% */
+    background-color: #3b5b54; 
+    transform: scale(1.1);
+} 
+
+img:hover {
+    transition: opacity 0.3s ease, background-color 0.3s ease;
+    transform: scale(1.1);
+
 }
 
 /* Ефект при натисканні */

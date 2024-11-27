@@ -119,7 +119,7 @@ h2 {
                             <td>
                                 <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full 
                                     {% if order['status'] == 'Обробляємо замовлення' %}status-processing
-                                    {% elif order['status'] == 'Замовлення уже в дорозі' %}status-shipped
+                                    {% elif order['status'] == 'Замовлення вже в дорозі' %}status-shipped
                                     {% elif order['status'] == 'Замовлення було доставлено успішно' %}status-delivered
                                     {% else %}status-cancelled{% endif %}">
                                     {{ order['status'] }}
