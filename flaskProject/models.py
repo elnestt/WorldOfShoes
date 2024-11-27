@@ -108,3 +108,33 @@ def get_users():
     users = conn.execute('SELECT * FROM users').fetchall()
     conn.close()
     return users
+
+def add_feedback(id, name, email, message=None):
+    try:
+        # Підключення до бази даних
+        conn = sqlite3.connect('flaskProject/db world of shoes.db')  # Змініть на ваш файл бази даних
+        cursor = conn.cursor()
+        
+ 
+        # SQL-запит для вставки відгуку
+        query = """
+        INSERT INTO feedback (name, email, message)
+        VALUES (?, ?, ?)
+        """
+        
+        # Виконання запиту
+        cursor.execute(query, (name, email, message))
+        conn.commit()
+        
+        # Закриття курсора і з'єднання
+        cursor.close()
+        conn.close()
+        print("Feedback added successfully!")
+    except sqlite3.Error as e:
+        # Обробка помилок SQLite
+        print(f"Database error: {e}")
+        raise
+    except Exception as e:
+        # Інші помилки
+        print(f"Unexpected error: {e}")
+        raise

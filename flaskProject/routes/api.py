@@ -10,7 +10,10 @@ from models import (
     get_user_by_id,
     register_user,
     login_user,
-    get_db_connection
+    get_db_connection,
+    add_feedback,
+    login_user,
+    register_user
 )
 api_bp = Blueprint('api', __name__)
 
@@ -145,6 +148,7 @@ def login_user_api():
     except Exception as e:
         return jsonify({'error': str(e)}), 500
     
+
 #Admin delete feedback
 @api_bp.route('/api/admin/delete_feedback/<int:id>', methods=['DELETE'])
 def admin_delete_feedback(id):
@@ -213,3 +217,26 @@ def admin_delete_order_api(id):
         return jsonify({'message': 'Order deleted successfully'}), 200
     except Exception as e:
         return jsonify({'error': str(e)}), 500
+
+# Add contact
+@api_bp.route('/api/contacts', methods=['POST'])
+def add_feedback_api():
+    try:
+        data = request.get_json()
+        name = data.get('name')
+        email = data.get('email')
+        message = data.get('message')
+
+        # Перевірка обов'язкових полів
+        if not name or not email or not message:
+            return jsonify({'error': 'Missing name, email, or message'}), 400
+
+        # Збереження контакту у таблицю feedback
+        add_feedback(name, email, message)
+
+        return jsonify({'message': 'Message added successfully'}), 201
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+
+
+
