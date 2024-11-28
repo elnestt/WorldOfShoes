@@ -36,7 +36,59 @@ img {
     
 }
 
-
+.empty-cart-page {
+            font-family: 'Roboto', Arial, sans-serif;
+            background: linear-gradient(to right, #f8f9fa, #e9ecef);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            color: #495057;
+        }
+        .empty-cart-container {
+            text-align: center;
+            background: #ffffff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            padding: 30px;
+            max-width: 1600px;
+            height: 350px;
+            width: 90%;
+            margin-top: -95%;
+            margin-left: 33%;
+            margin: 0 auto;
+        }
+        .empty-cart-container h1 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            color: #e74c3c;
+        }
+        .empty-cart-container p {
+            font-size: 1rem;
+            margin: 20px 0;
+            color: #6c757d;
+        }
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background:    #68888F ;
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+        .btn:hover {
+            background: #4F766F;
+            color: #e9ecef;
+        }
+        .icon {
+            font-size: 4rem;
+            color: #e74c3c;
+            margin-bottom: 20px;
+        }
 </style>
 
 {% if cart %}
@@ -73,6 +125,13 @@ img {
         <button type="submit" class=" text-white px-4 py-2 rounded " style="background-color: rgb(73, 95, 100); margin-left: 5%; width: 200px; height: 80px;">Оплатити замовлення</button>
     </form>
 {% else %}
-    <p class="n1">ВАШ КОШИК ПОРОЖНІЙ. </n> Ви можете придбати кросівки настиснувши на значок кросівка</p>
+<body class="empty-cart-page" >
+    <div class="empty-cart-container">
+        <div class="icon">🛒</div>
+        <h1>Кошик порожній</h1>
+        <p>Ви ще не додали жодного товару. Перейдіть до магазину, щоб знайти щось цікаве!</p>
+        <a href="/catalog" class="btn">Каталог</a>
+    </div>
+</body>
 {% endif %}
 {% endblock %}
