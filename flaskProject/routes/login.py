@@ -49,6 +49,7 @@ def login():
             if is_admin:
                 session['is_admin'] = True
                 flash("Ви увійшли як адміністратор")
+                
             else:
                 session['is_admin'] = False
                 flash("Ви увійшли як звичайний користувач")

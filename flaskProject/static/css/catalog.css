@@ -12,24 +12,28 @@ h1 {
     font-size: 5vw; /* Відносний розмір шрифту */
     border-radius: 8px;
     color: white;
-    padding: 0 10px; /* Відступи для збереження пропорцій */
 }
 
-/* Адаптивність через медіа-запити */
-@media (min-width: 1024px) {
-    h1 {
-        font-size: 30px; /* Максимальний розмір шрифту для великих екранів */
-    }
+
+.button{
+    font-size: 20px;
+    padding: 0px 5px;
+    font-family: 'Montserrat', sans-serif;
+    background-color:rgb(73, 95, 100) ;
+    border-radius: 0.5rem;
+    font-weight: 500;
+    color: rgb(255, 255, 255) ;
+
 }
 
-@media (max-width: 768px) {
-    h1 {
-        font-size: 6vw; /* Розмір тексту для середніх екранів */
-    }
+.button:hover {
+    transition: opacity 0.3s ease, background-color 0.3s ease;
+    background-color: #3b5b54; /* Трохи темніший відтінок */
+    transform: scale(1.1); /* Збільшується на 5% */
 }
 
-@media (max-width: 480px) {
-    h1 {
-        font-size: 7vw; /* Розмір тексту для мобільних пристроїв */
-    }
+/* Ефект при натисканні */
+.button:active {
+    transform: scale(0.95); /* Зменшується на 5% при натисканні */
+    background-color: #324943; /* Ще темніший відтінок */
 }
