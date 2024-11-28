@@ -4,7 +4,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 
 
 def get_db_connection():
-    conn = sqlite3.connect('flaskProject/db world of shoes.db')
+    conn = sqlite3.connect('WorldOfShoes/flaskProject/db world of shoes.db')
     conn.row_factory = sqlite3.Row
     return conn
 
