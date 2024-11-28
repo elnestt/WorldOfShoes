@@ -8,6 +8,9 @@ from models import (
     update_order_status,
     delete_order,
     get_user_by_id,
+    register_user,
+    login_user,
+    get_db_connection,
     add_feedback,
     login_user,
     register_user
@@ -145,6 +148,76 @@ def login_user_api():
     except Exception as e:
         return jsonify({'error': str(e)}), 500
     
+
+#Admin delete feedback
+@api_bp.route('/api/admin/delete_feedback/<int:id>', methods=['DELETE'])
+def admin_delete_feedback(id):
+    if session.get('is_admin', False):
+        return jsonify({'error': 'У вас немає прав адміна'}), 403
+    
+    try:
+        conn = get_db_connection()
+        conn.execute('DELETE FROM feedback WHERE id = ?', (id,))
+        conn.commit()
+        conn.close()
+        
+        return jsonify({'message': 'Відгук успішно видалено!'}), 200
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+    
+#Admin order
+@api_bp.route('/api/admin/orders/<int:id>', methods=['GET'])
+def admin_get_order_details(id):
+    if session.get('is_admin', False):
+        return jsonify({'error': 'У вас немає прав адміна'}), 403
+    try:
+        order, items = get_order_details(id)
+        if not order:
+            return jsonify({'error': 'Order not found'}), 404
+        return jsonify({
+            'order': dict(order),
+            'items': [dict(item) for item in items]
+        }), 200
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500 
+
+
+#Admin update order
+@api_bp.route('/api/admin/update_order_status/<int:id>', methods=['PUT'])
+def admin_update_order_status(id):
+    if session.get('is_admin', False):  # Перевірка, чи є в сесії ключ is_admin
+        return jsonify({'error': 'У вас немає прав адміна'}), 403
+
+    try:
+        # Отримуємо новий статус із JSON тіла запиту
+        data = request.get_json()
+        status = data.get('status')
+        
+        if not status:
+            return jsonify({'error': 'Не вказано статус замовлення'}), 400
+        
+        # Оновлюємо статус замовлення в базі даних
+        update_order_status(id, status)
+        
+        return jsonify({'message': 'Статус замовлення оновлено успішно'}), 200
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+    
+#    
+@api_bp.route('/api/admin/delete_order/<int:id>', methods=['DELETE'])
+def admin_delete_order_api(id):
+    if session.get('is_admin', False):
+        return jsonify({'error': 'У вас немає прав адміна'}), 403
+    try:
+        conn = get_db_connection()
+        conn.execute('DELETE FROM orders WHERE id = ?', (id,))
+        conn.commit()
+        conn.close()
+    
+        return jsonify({'message': 'Order deleted successfully'}), 200
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+
 # Add contact
 @api_bp.route('/api/contacts', methods=['POST'])
 def add_feedback_api():
@@ -164,5 +237,6 @@ def add_feedback_api():
         return jsonify({'message': 'Message added successfully'}), 201
     except Exception as e:
         return jsonify({'error': str(e)}), 500
+
 
 

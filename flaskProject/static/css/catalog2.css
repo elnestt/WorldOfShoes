@@ -25,12 +25,6 @@ h1 {
 
 }
 
-.button2:hover {
-    transition: opacity 0.3s ease, background-color 0.3s ease;
-    background-color: #3b5b54; /* Трохи темніший відтінок */
-    transform: scale(1.1); /* Збільшується на 5% */
-}
-
 /* Ефект при натисканні */
 .button2:active {
     transform: scale(0.95); /* Зменшується на 5% при натисканні */
