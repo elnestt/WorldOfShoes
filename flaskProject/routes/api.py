@@ -66,21 +66,6 @@ def add_order_api():
     except Exception as e:
         return jsonify({'error': str(e)}), 500
     
-#Update order status
-@api_bp.route('/api/orders/<int:order_id>', methods=['PUT'])
-def update_order_status_api(order_id):
-    try:
-        data = request.get_json()
-        status = data.get('status')
-
-        if not status:
-            return jsonify({'error': 'Missing status'}), 400
-
-        update_order_status(order_id, status)
-        return jsonify({'message': 'Order status updated successfully'}), 200
-    except Exception as e:
-        return jsonify({'error': str(e)}), 500
-    
 #Delete order
 @api_bp.route('/api/orders/<int:order_id>', methods=['DELETE'])
 def delete_order_api(order_id):
