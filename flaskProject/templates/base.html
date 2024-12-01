@@ -13,10 +13,10 @@
     <style>
      @keyframes slideDown {
     0% { max-height: 0; opacity: 0; }
-    100% { max-height: 300px; opacity: 1; }
+    100% { max-height: 500px; opacity: 1; }
 }
 @keyframes slideUp {
-    0% { max-height: 300px; opacity: 1; }
+    0% { max-height: 500px; opacity: 1; }
     100% { max-height: 0; opacity: 0; }
 }
 
@@ -249,6 +249,7 @@ body {
             <a href="/home" class="text-white hover:text-blue-200 transition-colors duration-300 hover:underline"><img src="{{ url_for('static', filename='icons/blog_icon_light.png') }}" width="70" height="70" style="margin-top: -18%;"></a>
             <a href="/contacts" class="text-white hover:text-blue-200 transition-colors duration-300 hover:underline" style="margin-right: 0px;"><img src="{{ url_for('static', filename='icons/phone_light_1.png') }}" width="40" height="40" style="margin-top: 2%;"></a>   
             <a href="/location" class="text-white hover:text-blue-200 transition-colors duration-300 hover:underline"><img src="{{ url_for('static', filename='icons/pin_location_light.png') }}" width="57" height="57" style="margin-top: -13%;"></a>
+            <a href="/profile" class="text-white hover:text-blue-200 transition-colors duration-300 hover:underline"><img src="{{ url_for('static', filename='icons/user_icon_light.png') }}" width="57" height="57" style="margin-top: -13%;"></a>
         </div>
     </nav>
 

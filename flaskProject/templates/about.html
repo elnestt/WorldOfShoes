@@ -7,22 +7,136 @@
 <link rel="stylesheet" href="{{ url_for('static', filename='css/about.css') }}">
     
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Історія нашого магазину:</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-</head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <link rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="main.css">
 <body>
-<div style="max-width: 1400px; margin: 0 auto;">
-    <div class="n1" style="float: none; max-width: 1600px; margin: 0 auto;">
-        <strong style="font-size: 70px;">Про Нас</strong>
-    <div style="margin-top: 30px;"></div>
-        <h1><b>У 2015 році група друзів із захопленням у світі спорту і моди вирішила створити свій бізнес, що поєднував би їхню пристрасть до кросівок із мрією відкрити власну справу. З дитинства вони з цікавістю спостерігали за розвитком спортивного взуття та помічали, як кросівки стали більше, ніж просто елементом спортивного одягу — вони перетворилися на символ культури та стилю життя.
-            Спочатку друзі почали шукати взуття з колекцій популярних брендів, яких не було у звичайних магазинах. Через знайомих у США, Європі та Японії вони замовляли рідкісні моделі, які інші магазини не могли запропонувати. За рік невеликий магазин, який вони відкрили в центрі міста, став місцем зустрічі колекціонерів та фанатів.
-            У міру того, як ринок кросівок почав рости, магазин розширив свій асортимент і почав співпрацю з ексклюзивними брендами, організовувати власні покази, розіграші, заходи, що залучали ще більше людей. Кросівки стали способом самовираження, а їхній магазин — місцем, де кожен міг знайти щось унікальне та оригінальне.</b>
-            </h1>
-    <img src="{{ url_for('static', filename='icons/team.jpg') }}" style="margin-left: 28%;" />
-</div>
-</body>
+    <div class="about-section">
+        <h1>Про Нас</h1>
+        <h3>Ми — команда ентузіастів, яка створила платформу для продажу стильних і якісних кросівок. Наша мета — допомогти кожному знайти 
+            ідеальну пару, яка поєднує комфорт, стиль та довговічність.</h3>
+        <h3> Ми обираємо тільки перевірених виробників і прагнемо надавати найкращий сервіс для наших клієнтів.
+             Наш сайт — це місце, де ви знайдете не лише останні моделі, але й класичні варіанти для будь-якої ситуації.</h3>
+      </div>
+      
+      <h2 style="text-align:center">Наша команда</h2>
+
+      <div class="row">
+        <div class="column">
+          <div class="card">
+            <img src="{{ url_for('static', filename='About/Денис.jpg') }}" alt="Jane" style="width:100%">
+            <div class="container">
+              <h2>Скопін Денис</h2>
+              <p class="title">SEO Specialist</p>
+              <p>Завжди знаходить найефективніші ключові слова та стратегії, щоб зробити наш сайт помітним і популярним.</p>
+              <p1>denisskopin83@gmail.com</p1>
+              <p><a href="/contacts" class="button">Contact</a></p>
+
+              
+            </div>
+          </div>
+        </div>
+      
+        <div class="column">
+          <div class="card">
+            <img src="{{ url_for('static', filename='About/Костя.jpg') }}" alt="Mike" style="width:100%">
+            <div class="container">
+              <h2>Пархомчук Костянтин</h2>
+              <p class="title">UI/UX Designer</p>
+              <p>Створює інтуїтивно зрозумілі та стильні дизайни, роблячи кожну взаємодію з нашим сайтом приємною і легкою для клієнтів.</p>
+              <p1>KostyaParh@gmail.com</p1>
+              <p><a href="/contacts" class="button">Contact</a></p>
+              
+            </div>
+          </div>
+        </div>
+      
+        <div class="column">
+          <div class="card">
+            <img src="{{ url_for('static', filename='About/Антон.jpg') }}" alt="John" style="width:100%">
+            <div class="container">
+              <h2>Тартаковський Антон</h2>
+              <p class="title">Customer Service Manager</p>
+              <p>Завжди готовий вислухати клієнта, знаходить рішення в будь-яких ситуаціях і забезпечує найвищий рівень обслуговування.</p>
+              <p1>AntonTart@gmail.com</p1>
+              <p><a href="/contacts" class="button">Contact</a></p>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="column">
+        <div class="card">
+          <img src="{{ url_for('static', filename='About/Ілля.jpg') }}" alt="John" style="width:100%">
+          <div class="container">
+            <h2>Вознюк Ілля</h2>
+            <p class="title">Logistics Manager</p>
+            <p>Майстер планування, який гарантує швидку та надійну доставку кожної пари кросівок до наших покупців.</p>
+            <p1>IllyaaaaVoz@example.com</p1>
+            <p><a href="/contacts" class="button">Contact</a></p>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="column">
+        <div class="card">
+          <img src="{{ url_for('static', filename='About/Льоша.jpg') }}" alt="John" style="width:100%">
+          <div class="container">
+            <h2>Олексій Харчук</h2>
+            <p class="title">Data Analyst</p>
+            <p>Аналізує цифри та перетворює їх на практичні ідеї, що допомагають нашому бізнесу вдосконалюватися.</p>
+            <p1>OleksiiHarchuk@gmail.com</p1>
+            <p><a href="/contacts" class="button">Contact</a></p>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+
+    
+    <div class="column">
+      <div class="card">
+        <img src="{{ url_for('static', filename='About/миха.jpg') }}" alt="Mike" style="width:100%">
+        <div class="container">
+          <h2>Чернік Михайло</h2>
+          <p class="title">Sales Manager</p>
+          <p>Вміє знайти підхід до кожного клієнта, мотивує команду та завжди тримає руку на пульсі продажів.</p>
+          <p1>misha3213@hmail.com</p1>
+          <p><a href="/contacts" class="button">Contact</a></p>
+          
+        </div>
+      </div>
+    </div>
+
+
+
+      <div class="column">
+        <div class="card">
+          <img src="{{ url_for('static', filename='About/Богдан.jpg') }}" alt="Mike" style="width:100%">
+          <div class="container">
+            <h2>Фещук Богдан</h2>
+            <p class="title">Social Media Manager</p>
+            <p>Завжди креативний і енергійний, створює контент, який привертає увагу і перетворює перегляди на покупки.</p>
+            <p1>bogdan14252@example.com</p1>
+            <p><a href="/contacts" class="button">Contact</a></p>
+            
+          </div>
+        </div>
+      </div>
+
+      
+
+
+
+
+
+      </body>
+
 </html>
 {% endblock %}
