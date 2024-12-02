@@ -10,7 +10,7 @@
 <div class="login-container">
         <form class="login-form" method="post" action="{{ url_for('login.login') }}">
             <h2 class="form-title">Авторизація</h2>
-            <input type="text" class="input-field" name="email" placeholder="Email" required>
+            <input type="email" class="input-field" name="email" placeholder="Email" required>
             <input type="password" class="input-field" name="password" placeholder="Пароль" required>
             <button type="submit" class="submit-button">Увійти</button>
         </form>
