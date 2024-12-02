@@ -206,6 +206,7 @@ def admin_delete_order_api(id):
 # Add contact
 @api_bp.route('/api/contacts', methods=['POST'])
 def add_feedback_api():
+   # Прийом даних
     try:
         data = request.get_json()
         name = data.get('name')
