@@ -9,182 +9,14 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='icons/favicon.ico') }}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/main.css')}}">
     <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-     @keyframes slideDown {
-    0% { max-height: 0; opacity: 0; }
-    100% { max-height: 500px; opacity: 1; }
-}
-@keyframes slideUp {
-    0% { max-height: 500px; opacity: 1; }
-    100% { max-height: 0; opacity: 0; }
-}
-
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
-
-body {
-            font-family: 'Arial', sans-serif;
-        }
-        .hero-section {
-            background: url('static/icons/Kostik.gif') no-repeat center center;
-            background-size: cover;
-            height: 90vh;
-            color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            position: relative;
-        }
-        .hero-section::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.6);
-            z-index: 1;
-        }
-        .hero-content {
-            position: relative;
-            z-index: 2;
-        }
-        .product-card img {
-            transition: transform 0.3s ease-in-out;
-        }
-        .navbar {
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        }
-
-.animate-slide-down {
-    animation: slideDown 0.3s ease-out forwards;
-}
-.animate-slide-up {
-    animation: slideUp 0.3s ease-in forwards;
-}
-.burger-line {
-    transition: all 0.3s ease-in-out;
-}
-.open .line1 {
-    transform: rotate(-45deg) translate(-5px, 6px);
-}
-.open .line2 {
-    opacity: 0;
-}
-.open .line3 {
-    transform: rotate(45deg) translate(-5px, -6px);
-}
-.image-container img {
-     transition: 0.3s;
-}
-
-.image-container img:hover {
-    content: url('static/icons/phone_dark_1.png');
-}
-
-.image-container1 img {
-     transition: 0.3s;
-}
-
-.image-container1 img:hover {
-    content: url('static/icons/blog_icon_dark.png');
-}
-
-.image-container2 img {
-     transition: 0.3s;
-}
-
-.image-container2 img:hover {
-    content: url('static/icons/more_about_us_dark.png');
-}
-
-.image-container3 img {
-     transition: 0.3s;
-}
-
-.image-container3 img:hover {
-    content: url('static/icons/pin_location_dark.png');
-}
-
-.headel{
-    font-family: 'Montserrat', sans-serif;
-    font-size: 100px;
-}
-
-.image-container4 img {
-     transition: 0.3s;
-}
-
-.image-container4 img:hover {
-    content: url('static/icons/buy_dark.png');
-}
-
-.image-container6 img {
-     transition: 0.3s;
-}
-
-.image-container5 img:hover {
-    content: url('static/icons/shoe_dark.png');
-}
-
-.image-container7 img {
-     transition: 0.3s;
-}
-
-.image-container7 img:hover {
-    content: url('static/icons/trolley_dark.png');
-}
-
-.image-container8 img {
-     transition: 0.3s;
-}
-
-.image-container8 img:hover {
-    content: url('static/icons/icons8-instagram.png');
-}
-
-.image-container9 img {
-     transition: 0.3s;
-}
-
-.image-container9 img:hover {
-    content: url('static/icons/user_icon_dark.png');
-}
-
-
-.square {
-            width: 300px; 
-            height: 200px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            border: 12px solid rgb(104, 136, 143); 
-            border-radius: 25px; 
-            font-size: 95px; 
-            font-weight: bold;
-            color: rgb(79, 118, 111); 
-            margin-top: 5%;
-            margin-left: 0%;
-            font-family: 'Montserrat', sans-serif;
-        }
-
-        .btn-primary {
-            --bs-btn-color: #fff;
-            --bs-btn-bg:    #68888F;
-            --bs-btn-border-color: #4F766F;
-            --bs-btn-hover-color: #fff;
-            --bs-btn-hover-bg: #4F766F;
-            --bs-btn-hover-border-color: #4F766F;
-        }
-
-    </style>
 </head>
 
 
 
 
-<body class="div1" style="background-color:rgb(255, 255, 255);">
+<body class="div1">
    <nav class="div2" style="background-color:rgb(73, 95, 100); height:50px;">
         <div class="container mx-auto flex justify-between items-center">
             <div class="flex items-center space-x-2">
@@ -224,7 +56,7 @@ body {
                         </a>
                         {% if session.get('is_admin') %}
                         <a href="/admin" style="margin-top: 10px;">
-                            <button>ADMIN</button>
+                            <button class="button" style="padding: 0; margin: 0;">ADMIN</button>
                         </a>
                         {% endif %}
                 {% else %}
@@ -268,8 +100,8 @@ body {
      <section class="hero-section">
         <div class="hero-content">
             <h1 class="display-4 fw-bold">WorldOfShoes</h1>
-            <p class="lead">З нами ваша нога не буде пробита</p>
-            <a href="/catalog" class="btn btn-primary btn-lg" style="margin-top: 4%;">Shop Now</a>
+            <p class="lead">З нами ваша нога не буде пробита</p>    
+            <a href="/catalog"><button class="button" style="margin-top: 4%; padding: 10px 30px;">Shop Now</button></a>
         </div>
     </section>
 

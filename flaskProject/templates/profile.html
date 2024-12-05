@@ -4,29 +4,30 @@
 {% block title %}Профіль користувача{% endblock %}
 
 {% block content %}
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/profile.css') }}"> 
 </head>
-<body>
-    <header>
+<body class="body-profile">
+    <header class="header-profile">
         <h1>Ласкаво просимо, {{ user.username }}!</h1>
     </header>
 
 
-    <main>
+    <main class="main-profile">
         <section class="profile-info">
-            <h2 style="text-align: center;font-weight: bold;padding-bottom: 20px;">Інформація про профіль</h2>
+            <h1 style="font-size: 30px; color: #333; background-color: white; text-align: center;">Інформація про профіль</h1>
             <p><strong>Ім'я користувача:</strong> {{ user.username }}</p>
             <p><strong>Email:</strong> {{ user.email }}</p>
-            <p><strong>Статус адміна:</strong> {{ user.is_admin }}</p>
+            {% if session.get('is_admin') %}
+                <p><strong>У вас є Статус адміна</strong> 
+            {% endif %}
 
         </section>
 
-        <section class="actions">
-            <a href="{{ url_for('login.logout') }}" class="button">Вийти</a>
+        <section style="margin: 0 auto; max-width: 105px;">
+            <a href="{{ url_for('login.logout') }}"><button class="button" style="padding: 10px 20px;">Вийти</button></a>
         </section>
     </main>
 
-    <footer>
+    <footer class="footer-profile">
         <p>&copy; 2024 Ваш сайт. Всі права захищені.</p>
     </footer>
 </body>

@@ -4,12 +4,9 @@
 {% block title %}Реєстрація{% endblock %}
 
 {% block content %}
-<link rel="stylesheet" href="{{ url_for('static', filename='css/register.css') }}">
-
-
 <body>
-    <div class="register-container">
-        <form class="register-form" method="post" action="{{ url_for('login.register') }}">
+    <div class="all-container">
+        <form class="all-form" method="post" action="{{ url_for('login.register') }}">
             <h2 class="form-title">Реєстрація</h2>
             <input type="text" class="input-field" name="username" placeholder="Ім'я користувача" required>
             <input type="email" class="input-field" name="email" placeholder="Email" required>
@@ -18,7 +15,7 @@
         </form>
     </div>
     <div class="form-footer">
-        <a href="{{ url_for('login.login') }}" class="login-link">Уже маєте акаунт? Увійдіть</a>
+        <a href="{{ url_for('login.login') }}" class="all-link" style="margin-bottom: 100px; "><p style="text-align: center;">Уже маєте акаунт? Увійдіть</p></a>
     </div>
 </body>
 

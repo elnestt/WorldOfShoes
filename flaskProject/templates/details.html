@@ -1,9 +1,6 @@
 {% extends "base.html" %}
 {% block title %}Магазини{% endblock %}
 {% block content %}
-
-<link rel="stylesheet" href="{{ url_for('static', filename='css/admin.css') }}">
-
 <div class="adminbg">
     <div class="order-header">
         <h1><b>Деталі замовлення №{{ order['id'] }}</b></h1>
