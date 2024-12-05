@@ -2,14 +2,15 @@
 {% extends "base.html" %}
 {% block title %}Каталог{% endblock %}
 {% block content %}
-<h1 style="text-align: center; font-size: 40px; background-color: rgb(73, 95, 100); margin-bottom: 40px; ">КАТАЛОГ</h1>
+<h1 style="text-align: center; font-size: 40px; margin-bottom: 40px; ">КАТАЛОГ</h1>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
 </form>
 
 
 <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6" style="max-width: 1600px; margin: 0 auto;">
     {% for product in products %}
     <div class="bg-white p-4 shadow-md rounded-lg relative group hover:shadow-lg transition-shadow duration-300" >
-        <img src="{{ product.image }}" alt="{{ product.name }}" class="w-full h-52 object-cover mb-2 rounded-md">
+        <img src="{{ product.image }}" alt="{{ product.name }}" class="w-full h-52 object-cover mb-2 rounded-md, product_img">
         <h2 class="text-xl font-semibold text-gray-800">{{ product.name }}</h2>
         <p class="text-gray-600">{{ product.price }} грн</p>
         <form action="{{ url_for('catalog.add_to_cart', product_id=product.id) }}">
@@ -17,6 +18,23 @@
         </form> 
     </div>
     {% endfor %}
+</div>
+
+<!-- Пагінація -->
+<div class="pagination">
+    {% if page > 1 %}
+        <a href="{{ url_for('catalog.catalog', page=page-1, limit=limit) }}">Попередня</a>
+    {% endif %}
+
+    {% for p in range(1, total_pages + 1) %}
+        <a href="{{ url_for('catalog.catalog', page=p, limit=limit) }}" class="{% if p == page %}active{% endif %}">
+            {{ p }}
+        </a>
+    {% endfor %}
+
+    {% if page < total_pages %}
+        <a href="{{ url_for('catalog.catalog', page=page+1, limit=limit) }}">Наступна</a>
+    {% endif %}
 </div>
 
 

@@ -20,15 +20,43 @@ api_bp = Blueprint('api', __name__)
 #Get all products
 @api_bp.route('/api/products', methods=['GET'])
 def get_products_api():
+    # Перевірка, чи користувач авторизований
+    if 'user_id' not in session:
+        return jsonify({
+            "status": "error",
+            "message": "You must be logged in to access this resource."
+        }), 401  # Повертаємо код помилки 401 (Unauthorized)
+    
+    # Перевірка, чи користувач є адміністратором
+    if not session.get('is_admin', False):  # Перевірка на admin права
+        return jsonify({
+            "status": "error",
+            "message": "You do not have admin rights."
+        }), 403  # Повертаємо код помилки 403 (Forbidden)
+
     try:
+        # Отримуємо товари
         products = get_products()
-        return jsonify([dict(product) for product in products]), 200
+        return jsonify([dict(product) for product in products]), 200  # Повертаємо список продуктів та статус 200 (OK)
     except Exception as e:
-        return jsonify({'error': str(e)}), 500
+        # Якщо сталася помилка, повертаємо повідомлення про помилку
+        return jsonify({'error': str(e)}), 500  # Повертаємо код помилки 500 (Internal Server Error)
+
+    
 
 #Get all orders
 @api_bp.route('/api/orders', methods=['GET'])
 def get_orders_api():
+    if 'user_id' not in session:
+        return jsonify({
+            "status": "error",
+            "message": "You must be logged in to access this resource."
+        }), 401
+    if session.get('is_admin') is not True:  # Перевірка, чи є користувач адміністратором
+        return jsonify({
+            "status": "error",
+            "message": "You do not have admin rights."
+        }), 403
     try:
         orders = get_orders()
         return jsonify([dict(order) for order in orders]), 200
@@ -38,6 +66,16 @@ def get_orders_api():
 #Get order details
 @api_bp.route('/api/orders/<int:order_id>', methods=['GET'])
 def get_order_details_api(order_id):
+    if 'user_id' not in session:
+        return jsonify({
+            "status": "error",
+            "message": "You must be logged in to access this resource."
+        }), 401
+    if session.get('is_admin') is not True:  # Перевірка, чи є користувач адміністратором
+        return jsonify({
+            "status": "error",
+            "message": "You do not have admin rights."
+        }), 403
     try:
         order, items = get_order_details(order_id)
         if not order:
@@ -52,6 +90,16 @@ def get_order_details_api(order_id):
 #Add order
 @api_bp.route('/api/orders', methods=['POST'])
 def add_order_api():
+    if 'user_id' not in session:
+        return jsonify({
+            "status": "error",
+            "message": "You must be logged in to access this resource."
+        }), 401
+    if session.get('is_admin') is not True:  # Перевірка, чи є користувач адміністратором
+        return jsonify({
+            "status": "error",
+            "message": "You do not have admin rights."
+        }), 403
     try:
         data = request.get_json()
         email = data.get('email')
@@ -69,6 +117,16 @@ def add_order_api():
 #Delete order
 @api_bp.route('/api/orders/<int:order_id>', methods=['DELETE'])
 def delete_order_api(order_id):
+    if 'user_id' not in session:
+        return jsonify({
+            "status": "error",
+            "message": "You must be logged in to access this resource."
+        }), 401
+    if session.get('is_admin') is not True:  # Перевірка, чи є користувач адміністратором
+        return jsonify({
+            "status": "error",
+            "message": "You do not have admin rights."
+        }), 403
     try:
         delete_order(order_id)
         return jsonify({'message': 'Order deleted successfully'}), 200
@@ -78,6 +136,16 @@ def delete_order_api(order_id):
 #Get all users
 @api_bp.route('/api/users', methods=['GET'])
 def get_all_users():
+    if 'user_id' not in session:
+        return jsonify({
+            "status": "error",
+            "message": "You must be logged in to access this resource."
+        }), 401
+    if session.get('is_admin') is not True:  # Перевірка, чи є користувач адміністратором
+        return jsonify({
+            "status": "error",
+            "message": "You do not have admin rights."
+        }), 403
     try:
         users = get_users()
         return jsonify([dict(user) for user in users]), 200
@@ -87,6 +155,16 @@ def get_all_users():
 #Get user by id
 @api_bp.route('/api/users/<int:user_id>', methods=['GET'])
 def get_user_by_id_api(user_id):
+    if 'user_id' not in session:
+        return jsonify({
+            "status": "error",
+            "message": "You must be logged in to access this resource."
+        }), 401
+    if session.get('is_admin') is not True:  # Перевірка, чи є користувач адміністратором
+        return jsonify({
+            "status": "error",
+            "message": "You do not have admin rights."
+        }), 403
     try:
         user = get_user_by_id(user_id)
         if not user:
@@ -98,6 +176,16 @@ def get_user_by_id_api(user_id):
 #Register user
 @api_bp.route('/api/register', methods=['POST'])
 def register_user_api():
+    if 'user_id' not in session:
+        return jsonify({
+            "status": "error",
+            "message": "You must be logged in to access this resource."
+        }), 401
+    if session.get('is_admin') is not True:  # Перевірка, чи є користувач адміністратором
+        return jsonify({
+            "status": "error",
+            "message": "You do not have admin rights."
+        }), 403
     try:
         data = request.get_json()
         username = data.get('username')
@@ -115,6 +203,16 @@ def register_user_api():
 #Login user
 @api_bp.route('/api/login', methods=['POST'])
 def login_user_api():
+    if 'user_id' not in session:
+        return jsonify({
+            "status": "error",
+            "message": "You must be logged in to access this resource."
+        }), 401
+    if session.get('is_admin') is not True:  # Перевірка, чи є користувач адміністратором
+        return jsonify({
+            "status": "error",
+            "message": "You do not have admin rights."
+        }), 403
     try:
         data = request.get_json()
         email = data.get('email')

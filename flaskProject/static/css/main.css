@@ -141,6 +141,7 @@ body {
 
 }
 
+
 .button-catalog:hover {
     transition: opacity 0.3s ease, background-color 0.3s ease;
     background-color: #3b5b54; /* Трохи темніший відтінок */
@@ -151,6 +152,32 @@ body {
 .button-catalog:active {
     transform: scale(0.95); /* Зменшується на 5% при натисканні */
     background-color: #324943; /* Ще темніший відтінок */
+}
+
+.product_img:hover {
+    transform: scale(1.1); /* Збільшуємо зображення */
+}
+
+
+.pagination {
+    margin-top: 20px;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+.pagination a {
+    margin: 0 5px;
+    padding: 5px 10px;
+    text-decoration: none;
+    background-color: #f1f1f1;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+}
+.pagination a.active {
+    background-color: #007bff;
+    color: white;
+}
+.pagination a:hover {
+    background-color: #ddd;
 }
 
 

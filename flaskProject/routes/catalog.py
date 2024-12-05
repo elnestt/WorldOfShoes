@@ -3,10 +3,6 @@ from models import get_products, add_order
 
 catalog_bp = Blueprint('catalog', __name__)
 
-@catalog_bp.route('/catalog')
-def catalog():
-    products = get_products()
-    return render_template('catalog.html', products=products)
 
 @catalog_bp.route('/add_to_cart/<int:product_id>')
 def add_to_cart(product_id):
@@ -35,3 +31,41 @@ def checkout():
     add_order(email, address, cart)
     session['cart'] = {}
     return redirect(url_for('catalog.catalog'))
+
+@catalog_bp.route('/catalog')
+def catalog():
+    # Отримуємо параметри сторінки та ліміту з URL (за замовчуванням page=1, limit=5)
+    page = int(request.args.get('page', 1))
+    limit = int(request.args.get('limit', 5))
+
+    # Отримуємо всі товари
+    all_products = get_products()  # Отримуємо всі товари
+    total_products = len(all_products)  # Загальна кількість товарів
+
+    # Визначаємо кількість сторінок
+    total_pages = (total_products + limit - 1) // limit
+
+    # Перевіряємо, чи не перевищує сторінка загальну кількість сторінок
+    if page > total_pages:
+        page = total_pages  # Якщо перевищує, встановлюємо останню сторінку
+
+    # Обчислюємо відображення товарів для поточної сторінки
+    start = (page - 1) * limit
+    end = start + limit
+
+    # Обмежуємо кількість товарів для поточної сторінки
+    products = all_products[start:end]
+
+    return render_template(
+        'catalog.html',
+        products=products,
+        page=page,
+        limit=limit,
+        total_pages=total_pages,
+        total_products=total_products
+    )
+
+
+
+
+
