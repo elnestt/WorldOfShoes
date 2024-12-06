@@ -45,10 +45,6 @@ def catalog():
     # Визначаємо кількість сторінок
     total_pages = (total_products + limit - 1) // limit
 
-    # Перевіряємо, чи не перевищує сторінка загальну кількість сторінок
-    if page > total_pages:
-        page = total_pages  # Якщо перевищує, встановлюємо останню сторінку
-
     # Обчислюємо відображення товарів для поточної сторінки
     start = (page - 1) * limit
     end = start + limit
