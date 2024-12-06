@@ -117,16 +117,6 @@ def add_order_api():
 #Delete order
 @api_bp.route('/api/orders/<int:order_id>', methods=['DELETE'])
 def delete_order_api(order_id):
-    if 'user_id' not in session:
-        return jsonify({
-            "status": "error",
-            "message": "You must be logged in to access this resource."
-        }), 401
-    if session.get('is_admin') is not True:  # Перевірка, чи є користувач адміністратором
-        return jsonify({
-            "status": "error",
-            "message": "You do not have admin rights."
-        }), 403
     try:
         delete_order(order_id)
         return jsonify({'message': 'Order deleted successfully'}), 200
@@ -286,7 +276,7 @@ def admin_update_order_status(id):
     except Exception as e:
         return jsonify({'error': str(e)}), 500
     
-#    
+#Admin delete order
 @api_bp.route('/api/admin/delete_order/<int:id>', methods=['DELETE'])
 def admin_delete_order_api(id):
     if session.get('is_admin', False):
@@ -301,7 +291,7 @@ def admin_delete_order_api(id):
     except Exception as e:
         return jsonify({'error': str(e)}), 500
 
-# Add contact
+#Add contact
 @api_bp.route('/api/contacts', methods=['POST'])
 def add_feedback_api():
     try:

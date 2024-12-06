@@ -35,30 +35,27 @@ def checkout():
 @catalog_bp.route('/catalog')
 def catalog():
     # Отримуємо параметри сторінки та ліміту з URL (за замовчуванням page=1, limit=5)
-    page = int(request.args.get('page', 1))
+    page = int(request.args.get('page', 1))  
     limit = int(request.args.get('limit', 5))
 
-    # Отримуємо всі товари
-    all_products = get_products()  # Отримуємо всі товари
-    total_products = len(all_products)  # Загальна кількість товарів
+    # Отримуємо список усіх товарів.
+    all_products = get_products() 
+    total_products = len(all_products)
 
-    # Визначаємо кількість сторінок
     total_pages = (total_products + limit - 1) // limit
 
-    # Обчислюємо відображення товарів для поточної сторінки
-    start = (page - 1) * limit
-    end = start + limit
+    start = (page - 1) * limit  # Індекс першого товару 
+    end = start + limit  # Індекс останнього товару 
 
-    # Обмежуємо кількість товарів для поточної сторінки
-    products = all_products[start:end]
+    products = all_products[start:end]  # Створюємо підмножину товарів для сторінки.
 
     return render_template(
-        'catalog.html',
-        products=products,
-        page=page,
+        'catalog.html',  # Шаблон HTML, який буде використовуватися для рендерингу.
+        products=products, 
+        page=page,  
         limit=limit,
-        total_pages=total_pages,
-        total_products=total_products
+        total_pages=total_pages, 
+        total_products=total_products  
     )
 
 
