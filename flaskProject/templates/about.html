@@ -2,15 +2,99 @@
 {% extends "base.html" %}
 
 {% block title %}Про Нас{% endblock %}
- 
+
 {% block content %}
-<link rel="stylesheet" href="{{ url_for('static', filename='css/about.css') }}">
-    
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-    <link rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="main.css">
+
+    <style>
+        html {
+            box-sizing: border-box;
+        }
+
+        *, *:before, *:after {
+            box-sizing: inherit;
+        }
+
+        .column {
+            float: left;
+            width: 33.3%;
+            margin-bottom: 16px;
+            padding: 0 8px;
+        }
+
+        .card {
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+            margin: 8px;
+        }
+
+        .about-section {
+            padding: 100px;
+            text-align: center;
+            background-color: #68888F ;
+            color: white;
+        }
+
+        .title {
+            color: grey;
+        }
+
+        .button {
+            border: none;
+            outline: 0;
+            display: inline-block;
+            padding: 8px;
+            color: white;
+            background-color:rgb(73, 95, 100);
+            text-align: center;
+            cursor: pointer;
+            width: 100%;
+            border-radius: 20px; 
+        }
+
+        .button:hover {
+            transition: opacity 0.3s ease, background-color 0.3s ease;
+            background-color: #3b5b54;
+            transform: scale(1.1);
+        }
+
+        .button:active {
+            transform: scale(0.95);
+            background-color: #324943;
+        }
+
+        @media screen and (max-width: 650px) {
+            .column {
+                width: 100%;
+                display: block;
+            }
+        }
+
+        p {
+            font-size: 27px;
+        }
+
+        h1 {
+            font-size: 60px;
+            font-weight: bold;
+        }
+
+        h2 {
+            font-size: 40px;
+        }
+
+        h3 {
+            font-size: 33px;
+        }
+
+        .container p1 {
+            font-size: 22px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
 <body>
     <div class="about-section">
         <h1>Про Нас</h1>
@@ -18,125 +102,103 @@
             ідеальну пару, яка поєднує комфорт, стиль та довговічність.</h3>
         <h3> Ми обираємо тільки перевірених виробників і прагнемо надавати найкращий сервіс для наших клієнтів.
              Наш сайт — це місце, де ви знайдете не лише останні моделі, але й класичні варіанти для будь-якої ситуації.</h3>
-      </div>
-      
-      <h2 style="text-align:center">Наша команда</h2>
-
-      <div class="row">
-        <div class="column">
-          <div class="card">
-            <img src="{{ url_for('static', filename='About/Денис.jpg') }}" alt="Jane" style="width:100%">
-            <div class="container">
-              <h2>Скопін Денис</h2>
-              <p class="title">SEO Specialist</p>
-              <p>Завжди знаходить найефективніші ключові слова та стратегії, щоб зробити наш сайт помітним і популярним.</p>
-              <p1>denisskopin83@gmail.com</p1>
-              <p><a href="/contacts" class="button">Contact</a></p>
-
-              
-            </div>
-          </div>
-        </div>
-      
-        <div class="column">
-          <div class="card">
-            <img src="{{ url_for('static', filename='About/Костя.jpg') }}" alt="Mike" style="width:100%">
-            <div class="container">
-              <h2>Пархомчук Костянтин</h2>
-              <p class="title">UI/UX Designer</p>
-              <p>Створює інтуїтивно зрозумілі та стильні дизайни, роблячи кожну взаємодію з нашим сайтом приємною і легкою для клієнтів.</p>
-              <p1>KostyaParh@gmail.com</p1>
-              <p><a href="/contacts" class="button">Contact</a></p>
-              
-            </div>
-          </div>
-        </div>
-      
-        <div class="column">
-          <div class="card">
-            <img src="{{ url_for('static', filename='About/Антон.jpg') }}" alt="John" style="width:100%">
-            <div class="container">
-              <h2>Тартаковський Антон</h2>
-              <p class="title">Customer Service Manager</p>
-              <p>Завжди готовий вислухати клієнта, знаходить рішення в будь-яких ситуаціях і забезпечує найвищий рівень обслуговування.</p>
-              <p1>AntonTart@gmail.com</p1>
-              <p><a href="/contacts" class="button">Contact</a></p>
-              
-            </div>
-          </div>
-        </div>
-      </div>
-
-
-      <div class="column">
-        <div class="card">
-          <img src="{{ url_for('static', filename='About/Ілля.jpg') }}" alt="John" style="width:100%">
-          <div class="container">
-            <h2>Вознюк Ілля</h2>
-            <p class="title">Logistics Manager</p>
-            <p>Майстер планування, який гарантує швидку та надійну доставку кожної пари кросівок до наших покупців.</p>
-            <p1>IllyaaaaVoz@example.com</p1>
-            <p><a href="/contacts" class="button">Contact</a></p>
-            
-          </div>
-        </div>
-      </div>
     </div>
+      
+    <h2 style="text-align:center">Наша команда</h2>
 
+    <div class="row">
+        <div class="column">
+            <div class="card">
+                <img src="{{ url_for('static', filename='About/Денис.jpg') }}" alt="Jane" style="width:100%">
+                <div class="container">
+                    <h2>Скопін Денис</h2>
+                    <p class="title">SEO Specialist</p>
+                    <p>Завжди знаходить найефективніші ключові слова та стратегії, щоб зробити наш сайт помітним і популярним.</p>
+                    <p1>denisskopin83@gmail.com</p1>
+                    <p><a href="/contacts" class="button">Contact</a></p>
+                </div>
+            </div>
+        </div>
+      
+        <div class="column">
+            <div class="card">
+                <img src="{{ url_for('static', filename='About/Костя.jpg') }}" alt="Mike" style="width:100%">
+                <div class="container">
+                    <h2>Пархомчук Костянтин</h2>
+                    <p class="title">UI/UX Designer</p>
+                    <p>Створює інтуїтивно зрозумілі та стильні дизайни, роблячи кожну взаємодію з нашим сайтом приємною і легкою для клієнтів.</p>
+                    <p1>KostyaParh@gmail.com</p1>
+                    <p><a href="/contacts" class="button">Contact</a></p>
+                </div>
+            </div>
+        </div>
+      
+        <div class="column">
+            <div class="card">
+                <img src="{{ url_for('static', filename='About/Антон.jpg') }}" alt="John" style="width:100%">
+                <div class="container">
+                    <h2>Тартаковський Антон</h2>
+                    <p class="title">Customer Service Manager</p>
+                    <p>Завжди готовий вислухати клієнта, знаходить рішення в будь-яких ситуаціях і забезпечує найвищий рівень обслуговування.</p>
+                    <p1>AntonTart@gmail.com</p1>
+                    <p><a href="/contacts" class="button">Contact</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <div class="column">
         <div class="card">
-          <img src="{{ url_for('static', filename='About/Льоша.jpg') }}" alt="John" style="width:100%">
-          <div class="container">
-            <h2>Олексій Харчук</h2>
-            <p class="title">Data Analyst</p>
-            <p>Аналізує цифри та перетворює їх на практичні ідеї, що допомагають нашому бізнесу вдосконалюватися.</p>
-            <p1>OleksiiHarchuk@gmail.com</p1>
-            <p><a href="/contacts" class="button">Contact</a></p>
-            
-          </div>
+            <img src="{{ url_for('static', filename='About/Ілля.jpg') }}" alt="John" style="width:100%">
+            <div class="container">
+                <h2>Вознюк Ілля</h2>
+                <p class="title">Logistics Manager</p>
+                <p>Майстер планування, який гарантує швидку та надійну доставку кожної пари кросівок до наших покупців.</p>
+                <p1>IllyaaaaVoz@example.com</p1>
+                <p><a href="/contacts" class="button">Contact</a></p>
+            </div>
         </div>
-      </div>
     </div>
 
-    
     <div class="column">
-      <div class="card">
-        <img src="{{ url_for('static', filename='About/миха.jpg') }}" alt="Mike" style="width:100%">
-        <div class="container">
-          <h2>Чернік Михайло</h2>
-          <p class="title">Sales Manager</p>
-          <p>Вміє знайти підхід до кожного клієнта, мотивує команду та завжди тримає руку на пульсі продажів.</p>
-          <p1>misha3213@hmail.com</p1>
-          <p><a href="/contacts" class="button">Contact</a></p>
-          
+        <div class="card">
+            <img src="{{ url_for('static', filename='About/Льоша.jpg') }}" alt="John" style="width:100%">
+            <div class="container">
+                <h2>Олексій Харчук</h2>
+                <p class="title">Data Analyst</p>
+                <p>Аналізує цифри та перетворює їх на практичні ідеї, що допомагають нашому бізнесу вдосконалюватися.</p>
+                <p1>OleksiiHarchuk@gmail.com</p1>
+                <p><a href="/contacts" class="button">Contact</a></p>
+            </div>
         </div>
-      </div>
     </div>
 
-
-
-      <div class="column">
+    <div class="column">
         <div class="card">
-          <img src="{{ url_for('static', filename='About/Богдан.jpg') }}" alt="Mike" style="width:100%">
-          <div class="container">
-            <h2>Фещук Богдан</h2>
-            <p class="title">Social Media Manager</p>
-            <p>Завжди креативний і енергійний, створює контент, який привертає увагу і перетворює перегляди на покупки.</p>
-            <p1>bogdan14252@example.com</p1>
-            <p><a href="/contacts" class="button">Contact</a></p>
-            
-          </div>
+            <img src="{{ url_for('static', filename='About/миха.jpg') }}" alt="Mike" style="width:100%">
+            <div class="container">
+                <h2>Чернік Михайло</h2>
+                <p class="title">Sales Manager</p>
+                <p>Вміє знайти підхід до кожного клієнта, мотивує команду та завжди тримає руку на пульсі продажів.</p>
+                <p1>misha3213@hmail.com</p1>
+                <p><a href="/contacts" class="button">Contact</a></p>
+            </div>
         </div>
-      </div>
+    </div>
 
-      
-
-
-
-
-
-      </body>
+    <div class="column">
+        <div class="card">
+            <img src="{{ url_for('static', filename='About/Богдан.jpg') }}" alt="Mike" style="width:100%">
+            <div class="container">
+                <h2>Фищук Богдан</h2>
+                <p class="title">Social Media Manager</p>
+                <p>Завжди креативний і енергійний, створює контент, який привертає увагу і перетворює перегляди на покупки.</p>
+                <p1>bogdan14252@example.com</p1>
+                <p><a href="/contacts" class="button">Contact</a></p>
+            </div>
+        </div>
+    </div>
+</body>
 
 </html>
 {% endblock %}
