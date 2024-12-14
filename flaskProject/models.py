@@ -112,7 +112,7 @@ def get_users():
 def add_feedback(id, name, email, message=None):
     try:
         # Підключення до бази даних
-        conn = sqlite3.connect('flaskProject/db world of shoes.db')  # Змініть на ваш файл бази даних
+        conn = sqlite3.connect('flaskProject/db world of shoes.db')
         cursor = conn.cursor()
         
  
